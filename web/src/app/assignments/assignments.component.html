@@ -1,0 +1,24 @@
+<main class="container">
+  <nav><a routerLink="/add">
+      <button mat-flat-button class="ajouterBtn" color="accent">
+        Ajouter un devoir
+      </button>
+    </a></nav>
+   <cdk-virtual-scroll-viewport #scroller itemSize="96" class="viewport" id="infinite-scroll">
+    <mat-list *cdkVirtualFor="let assignment of assignments">
+      <nav><a routerLink="/assignment/{{assignment.id}}">
+        <h3 mat-subheader>Date de rendu {{assignment.dateDeRendu | date}}</h3>
+        <mat-list-item >
+          <p appRendu *ngIf="assignment.rendu; else nonsoumis">
+            {{assignment.nom}} rendu.
+          </p>
+          <mat-divider></mat-divider>
+          <ng-template #nonsoumis>
+            <p>Devoir intitulé {{assignment.nom}} non rendu.</p>
+          </ng-template>
+        </mat-list-item>
+      </a></nav>
+    </mat-list>
+  </cdk-virtual-scroll-viewport>
+
+</main>

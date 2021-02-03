@@ -1,0 +1,25 @@
+.rendu {
+  color:green;
+  border: 1px solid green;
+  padding:2px;
+}
+
+.nonRendu {
+  color:red;
+  border: 1px solid red;
+  padding:2px;
+  background-color:yellow;
+}
+
+.container {
+  display:flex;
+  flex-direction: column;
+}
+
+.ajouterBtn {
+  align-self: flex-end;
+}
+
+#infinite-scroll{
+  height:500px;
+}
