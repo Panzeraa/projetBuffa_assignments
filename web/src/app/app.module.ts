@@ -4,6 +4,7 @@ import {NgModule, ViewChild} from '@angular/core';
 import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
+import {MatToolbarModule} from '@angular/material/toolbar';
 import {MatButtonModule} from '@angular/material/button';
 import {MatInputModule} from '@angular/material/input';
 import {MatFormFieldModule} from '@angular/material/form-field';
@@ -56,6 +57,7 @@ const routes: Routes = [
     MatDatepickerModule, MatNativeDateModule,
     MatListModule, MatCardModule,
     MatCheckboxModule, MatSlideToggleModule,
+    MatToolbarModule,
     FormsModule, HttpClientModule,
     RouterModule.forRoot(routes)
   ],

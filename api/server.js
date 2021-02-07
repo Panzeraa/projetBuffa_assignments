@@ -1,7 +1,11 @@
+//https://www.frugalprototype.com/api-mongodb-mongoose-node-js/
+//https://levelup.gitconnected.com/handling-errors-in-mongoose-express-for-display-in-react-d966287f573b
+
 let express = require("express");
 let app = express();
 let bodyParser = require("body-parser");
 let assignment = require("./routes/assignments");
+let utilisateur = require("./routes/utilisateurs");
 
 let mongoose = require("mongoose");
 mongoose.Promise = global.Promise;
@@ -9,6 +13,7 @@ mongoose.Promise = global.Promise;
 
 // remplacer toute cette chaine par l'URI de connexion à votre propre base dans le cloud s
 const uri = require("./config").mongo.endpoint;
+// const utilisateur = require("./model/utilisateur");
 
 const options = {
   useNewUrlParser: true,
@@ -48,6 +53,8 @@ let port = process.env.PORT || 8010;
 
 // les routes
 const prefix = "/api";
+
+app.route(prefix + "/utilisateurs").get(utilisateur.login);
 
 app.route(prefix + "/assignments").get(assignment.getAssignments);
 
