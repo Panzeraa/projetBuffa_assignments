@@ -19,14 +19,15 @@ function login(req, res) {
     //   );
     // let username = req.params.username;
     let username = req.query.username;
+    let password = req.query.password;
 
-    console.log('username ::: ' + username)
-    Utilisateur.findOne({ username: username }, (err, user) => {
+    // console.log('username ::: ' + username)
+    Utilisateur.findOne({ username: username, password: password }, (err, user) => {
         if (err) {
             res.send(err);
         }
-        if(user == null){
-            res.status(404)
+        if (user == null) {
+            res.status(401)
         }
         console.log(user);
         res.send(user);

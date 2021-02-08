@@ -16,6 +16,8 @@ import {MatListModule} from '@angular/material/list';
 import {MatCardModule} from '@angular/material/card';
 import {MatCheckboxModule} from '@angular/material/checkbox';
 import {MatSlideToggleModule} from '@angular/material/slide-toggle';
+import {MatMenuModule} from '@angular/material/menu';
+import {MatTabsModule} from '@angular/material/tabs';
 import { AssignmentsComponent } from './assignments/assignments.component';
 import { RenduDirective } from './shared/rendu.directive';
 import { FormsModule } from '@angular/forms';
@@ -26,6 +28,7 @@ import { EditAssignmentComponent } from './assignments/edit-assignment/edit-assi
 import { AuthGuard } from './shared/auth.guard';
 import { HttpClientModule } from '@angular/common/http';
 import {ScrollingModule} from '@angular/cdk/scrolling';
+import { LoginComponent } from './login/login.component';
 
 const routes: Routes = [
   {path: '', component: AssignmentsComponent},
@@ -46,7 +49,8 @@ const routes: Routes = [
     RenduDirective,
     AssignmentDetailComponent,
     AddAssignmentComponent,
-    EditAssignmentComponent
+    EditAssignmentComponent,
+    LoginComponent
   ],
   imports: [
     ScrollingModule,
@@ -57,7 +61,7 @@ const routes: Routes = [
     MatDatepickerModule, MatNativeDateModule,
     MatListModule, MatCardModule,
     MatCheckboxModule, MatSlideToggleModule,
-    MatToolbarModule,
+    MatToolbarModule,MatMenuModule,MatTabsModule,
     FormsModule, HttpClientModule,
     RouterModule.forRoot(routes)
   ],
