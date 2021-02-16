@@ -1,6 +1,6 @@
 let Utilisateur = require("../model/utilisateurModel");
 
-// Récupérer tous les assignments (GET)
+// Connexion POST
 function login(req, res) {
     //   var aggregateQuery = Assignment.aggregate();
     //   Assignment.aggregatePaginate(
@@ -18,8 +18,10 @@ function login(req, res) {
     //     }
     //   );
     // let username = req.params.username;
-    let username = req.query.username;
-    let password = req.query.password;
+    let username = req.body.username;
+    let password = req.body.password;
+    console.log(req)
+    console.log(username + " - " + password)
 
     // console.log('username ::: ' + username)
     Utilisateur.findOne({ username: username, password: password }, (err, user) => {

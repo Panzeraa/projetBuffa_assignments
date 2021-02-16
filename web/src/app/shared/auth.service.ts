@@ -1,4 +1,6 @@
+import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { Observable } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
@@ -6,10 +8,13 @@ import { Injectable } from '@angular/core';
 export class AuthService {
   loggedIn = false;
 
-  constructor() { }
+  constructor(private http: HttpClient) { }
 
-  logIn() {
+  uri = 'http://localhost:8010/api/utilisateurs';
+
+  logIn(user: any): Observable<any> {
     this.loggedIn = true;
+    return this.http.post(this.uri, user);
   }
 
   logOut() {

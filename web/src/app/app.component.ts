@@ -40,11 +40,11 @@ export class AppComponent {
   }
 
   login() {
-    if (this.authService.loggedIn) {
-      this.authService.logOut();
-      this.router.navigate(['/home']);
-    } else {
-      this.authService.logIn();
-    }
+    // if (this.authService.loggedIn) {
+    //   this.authService.logOut();
+    //   this.router.navigate(['/home']);
+    // } else {
+    //   this.authService.logIn();
+    // }
   }
 }

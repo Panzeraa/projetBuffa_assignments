@@ -54,7 +54,7 @@ let port = process.env.PORT || 8010;
 // les routes
 const prefix = "/api";
 
-app.route(prefix + "/utilisateurs").get(utilisateur.login);
+app.route(prefix + "/utilisateurs").post(utilisateur.login);
 
 app.route(prefix + "/assignments").get(assignment.getAssignments);
 
