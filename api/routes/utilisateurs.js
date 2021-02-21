@@ -20,7 +20,7 @@ function login(req, res) {
     // let username = req.params.username;
     let username = req.body.username;
     let password = req.body.password;
-    console.log(req)
+    console.log("req : " + req)
     console.log(username + " - " + password)
 
     // console.log('username ::: ' + username)

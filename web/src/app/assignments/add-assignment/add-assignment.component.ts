@@ -13,6 +13,11 @@ export class AddAssignmentComponent implements OnInit {
   nouvelAssignment: Assignment;
   nomAssignment = '';
   dateRendu: Date;
+  eleveAssignment = '';
+  matiereAssignment =  '';
+  noteAssignment = '';
+  remarqueAssignment = '';
+  renduAssignment = false;
 
   constructor(private assignmentService: AssignmentsService, private router: Router) { }
 
@@ -27,9 +32,13 @@ export class AddAssignmentComponent implements OnInit {
 
     nouvelAssignment.id = this.assignmentService.getNewId();
 
+    nouvelAssignment.eleve = this.eleveAssignment;
     nouvelAssignment.nom = this.nomAssignment;
+    nouvelAssignment.matiere = this.matiereAssignment;
     nouvelAssignment.dateDeRendu = this.dateRendu;
-    nouvelAssignment.rendu = false;
+    nouvelAssignment.note = this.noteAssignment;
+    nouvelAssignment.remarque = this.remarqueAssignment;
+    nouvelAssignment.rendu = this.renduAssignment;
 
     // this.assignments.push(nouvelAssignment);
     // on envoie un événement appelé "nouvelAssignment" vers le père (ou autres..)

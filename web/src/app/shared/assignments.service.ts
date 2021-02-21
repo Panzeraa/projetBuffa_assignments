@@ -19,19 +19,31 @@ export class AssignmentsService {
       id: 1,
       nom: 'TP WebComponents INTENSE',
       dateDeRendu: new Date('2020-11-17'),
-      rendu: true
+      rendu: true,
+      eleve: 'John Carter',
+      matiere: 'Base de données',
+      note: '15',
+      remarque: 'Des progres... continue !'
     },
     {
       id: 2,
       nom: 'TP Angular INTENSE',
       dateDeRendu: new Date('2020-12-03'),
-      rendu: false
+      rendu: false,
+      eleve: 'Alexis Delage',
+      matiere: 'Communication',
+      note: '16',
+      remarque: 'Des progres... continue !'
     },
     {
       id: 3,
       nom: 'TP React INTENSE',
       dateDeRendu: new Date('2021-01-10'),
-      rendu: false
+      rendu: false,
+      eleve: 'Michel Braws',
+      matiere: 'Angular',
+      note: '14',
+      remarque: 'Des progres... continue !'
     },
   ];
 

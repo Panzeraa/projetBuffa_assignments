@@ -4,4 +4,8 @@ export class Assignment {
   nom: string;
   dateDeRendu: Date;
   rendu: boolean;
+  eleve: string;
+  matiere: string;
+  note: string;
+  remarque: string;
 }

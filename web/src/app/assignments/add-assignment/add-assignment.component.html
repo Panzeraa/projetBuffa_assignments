@@ -1,12 +1,46 @@
-<form ngForm class="form" #assignmentForm>
+<form ngForm class="form" #assignmentForm>  
+
   <mat-form-field>
-    <input matInput placeholder="nom" [(ngModel)]="nomAssignment" name="nom">
+    <input matInput placeholder="Nom de l'élève" [(ngModel)]="eleveAssignment" name="auteur">
   </mat-form-field>
+
+  <mat-form-field>
+    <input matInput placeholder="Nom du devoir" [(ngModel)]="nomAssignment" name="nom">
+  </mat-form-field>
+
+  <mat-form-field>
+    <mat-label>Matière</mat-label>
+    <mat-select [(ngModel)]="matiereAssignment" name="matiere">
+      <mat-option value="bd">Base de données</mat-option>
+      <mat-option value="technoWeb">Technologies Web</mat-option>
+      <mat-option value="grails">Grails</mat-option>
+      <mat-option value="angular">Angular</mat-option>
+      <mat-option value="ios">iOS</mat-option>
+      <mat-option value="comm">Communication</mat-option>
+      <mat-option value="spring">Spring</mat-option>
+    </mat-select>
+  </mat-form-field>
+
   <mat-form-field>
     <input matInput [matDatepicker]="picker" placeholder="Date de rendu" [(ngModel)]="dateRendu" name="date">
     <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
     <mat-datepicker #picker></mat-datepicker>
   </mat-form-field>
+
+  <mat-form-field>
+    <input matInput placeholder="Note sur 20" [(ngModel)]="noteAssignment" name="note">
+  </mat-form-field>
+
+  <mat-form-field>
+    <input matInput placeholder="Remarque" [(ngModel)]="remarqueAssignment" name="remarque">
+  </mat-form-field>
+
+  <div>
+    <mat-radio-group [(ngModel)]="renduAssignment" name="rendu">
+      <mat-radio-button value="true" [disabled]="noteAssignment==''" [checked]="noteAssignment!=''">Rendu</mat-radio-button>
+      <mat-radio-button value="false">Non-rendu</mat-radio-button>
+    </mat-radio-group>
+  </div>
 
   <button mat-stroked-button (click)="onSubmit($event)">
     Ajouter assignment

@@ -6,6 +6,8 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 import {MatToolbarModule} from '@angular/material/toolbar';
 import {MatButtonModule} from '@angular/material/button';
+import {MatRadioModule} from '@angular/material/radio';
+import {MatSelectModule} from '@angular/material/select';
 import {MatInputModule} from '@angular/material/input';
 import {MatFormFieldModule} from '@angular/material/form-field';
 import {MatIconModule} from '@angular/material/icon';
@@ -56,10 +58,10 @@ const routes: Routes = [
     ScrollingModule,
     BrowserModule,
     BrowserAnimationsModule, MatButtonModule,
-    MatIconModule, MatDividerModule,
+    MatIconModule, MatDividerModule, MatRadioModule,
     MatInputModule, MatFormFieldModule,
     MatDatepickerModule, MatNativeDateModule,
-    MatListModule, MatCardModule,
+    MatListModule, MatCardModule, MatSelectModule,
     MatCheckboxModule, MatSlideToggleModule,
     MatToolbarModule,MatMenuModule,MatTabsModule,
     FormsModule, HttpClientModule,
