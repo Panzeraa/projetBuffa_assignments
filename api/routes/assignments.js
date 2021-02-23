@@ -2,7 +2,12 @@ let Assignment = require("../model/assignmentModel");
 
 // Récupérer tous les assignments (GET)
 function getAssignments(req, res) {
-  var aggregateQuery = Assignment.aggregate();
+  
+  let rendu = req.query.rendu;
+  console.log(rendu)
+  rendu = Boolean(Number(rendu));
+  console.log(rendu)
+  var aggregateQuery = Assignment.aggregate([{ $match: { rendu: rendu} }]);
   Assignment.aggregatePaginate(
     aggregateQuery,
     {
@@ -13,7 +18,7 @@ function getAssignments(req, res) {
       if (err) {
         res.send(err);
       }
-      console.log(assignments);
+      // console.log(assignments);
       res.send(assignments);
     }
   );

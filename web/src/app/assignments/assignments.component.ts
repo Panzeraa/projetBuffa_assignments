@@ -9,14 +9,22 @@ import {map, pairwise,filter,throttleTime} from 'rxjs/operators';
   styleUrls: ['./assignments.component.css']
 })
 export class AssignmentsComponent implements OnInit, AfterViewInit {
-  assignments: Assignment[] = [];
+  assignmentsRendu: Assignment[] = [];
+  assignmentsNonRendu: Assignment[] = [];
+  
   page : Number;
   nextPage : Number = 1;
   limit : Number = 10;
   countAssignments : Number ;
-  constructor(private assignmentService: AssignmentsService,private ngZone: NgZone) {  }
+  
+  pageNonRendu : Number;
+  nextPageNonRendu : Number = 1;
+  limitNonRendu : Number = 10;
+  countAssignmentsNonRendu : Number ;
+  constructor(private assignmentService: AssignmentsService,private ngZone: NgZone, private ngZoneNonRendu: NgZone) {  }
 
   @ViewChild('scroller') scroller: CdkVirtualScrollViewport;
+  @ViewChild('scrollerNonRendu') scrollerNonRendu: CdkVirtualScrollViewport;
 
   ngAfterViewInit():void{
     this.scroller.elementScrolled().pipe(
@@ -26,22 +34,45 @@ export class AssignmentsComponent implements OnInit, AfterViewInit {
       throttleTime(200)
     ).subscribe(() => {
       this.ngZone.run(() => {
-        this.getAssignments();
+        this.getAssignmentsRendu();
+      })
+    })
+
+    this.scrollerNonRendu.elementScrolled().pipe(
+      map(() => this.scrollerNonRendu.measureScrollOffset('bottom')),
+      pairwise(),
+      filter(([y1, y2]) => (y2 < y1 && y2 < 140)),
+      throttleTime(200)
+    ).subscribe(() => {
+      this.ngZone.run(() => {
+        this.getAssignmentsNonRendu();
       })
     })
   }
   ngOnInit(): void {
-    this.getAssignments();
+    this.getAssignmentsRendu();
+    this.getAssignmentsNonRendu();
   }
-  getAssignments() {
+  getAssignmentsRendu() {
     if(!this.nextPage)
       return
-    this.assignmentService.getAssignments(this.nextPage,this.limit)
+    this.assignmentService.getAssignments(this.nextPage,this.limit, true)
       .subscribe((data) => {
         this.page = data['page']
         this.nextPage = data['nextPage']
         this.countAssignments = data['totalDocs']
-        this.assignments = this.assignments.concat(data['docs']);
+        this.assignmentsRendu = this.assignmentsRendu.concat(data['docs']);
+    });
+  }
+  getAssignmentsNonRendu() {
+    if(!this.nextPageNonRendu)
+      return
+    this.assignmentService.getAssignments(this.nextPageNonRendu,this.limitNonRendu, false)
+      .subscribe((data) => {
+        this.pageNonRendu = data['page']
+        this.nextPageNonRendu = data['nextPage']
+        this.countAssignmentsNonRendu = data['totalDocs']
+        this.assignmentsNonRendu = this.assignmentsNonRendu.concat(data['docs']);
     });
   }
 }

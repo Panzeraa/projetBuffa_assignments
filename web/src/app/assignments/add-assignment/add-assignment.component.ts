@@ -3,10 +3,18 @@ import { Router } from '@angular/router';
 import { AssignmentsService } from '../../shared/assignments.service';
 import {Assignment} from '../assignment.model';
 
+import {FormBuilder, FormGroup, Validators} from '@angular/forms';
+
+
+import {STEPPER_GLOBAL_OPTIONS} from '@angular/cdk/stepper';
+
 @Component({
   selector: 'app-add-assignment',
   templateUrl: './add-assignment.component.html',
-  styleUrls: ['./add-assignment.component.css']
+  styleUrls: ['./add-assignment.component.css'],
+  providers: [{
+    provide: STEPPER_GLOBAL_OPTIONS, useValue: {showError: true}
+  }]
 })
 export class AddAssignmentComponent implements OnInit {
   // @Output() nouvelAssignment = new EventEmitter<Assignment>();
@@ -19,9 +27,22 @@ export class AddAssignmentComponent implements OnInit {
   remarqueAssignment = '';
   renduAssignment = false;
 
-  constructor(private assignmentService: AssignmentsService, private router: Router) { }
+  firstFormGroup: FormGroup;
+  secondFormGroup: FormGroup;
+  thirdFormGroup: FormGroup;
+
+  constructor(private assignmentService: AssignmentsService, private router: Router, private _formBuilder: FormBuilder) { }
 
   ngOnInit(): void {
+    this.firstFormGroup = this._formBuilder.group({
+      firstCtrl: ['', Validators.required]
+    });
+    this.secondFormGroup = this._formBuilder.group({
+      secondCtrl: ['', Validators.required]
+    });
+    this.thirdFormGroup = this._formBuilder.group({
+      secondCtrl: ['', Validators.required]
+    });
   }
 
   onSubmit(event) {

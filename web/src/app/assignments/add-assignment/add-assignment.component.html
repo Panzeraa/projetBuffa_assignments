@@ -1,4 +1,4 @@
-<form ngForm class="form" #assignmentForm>  
+<!-- <form ngForm class="form" #assignmentForm>
 
   <mat-form-field>
     <input matInput placeholder="Nom de l'élève" [(ngModel)]="eleveAssignment" name="auteur">
@@ -37,7 +37,8 @@
 
   <div>
     <mat-radio-group [(ngModel)]="renduAssignment" name="rendu">
-      <mat-radio-button value="true" [disabled]="noteAssignment==''" [checked]="noteAssignment!=''">Rendu</mat-radio-button>
+      <mat-radio-button value="true" [disabled]="noteAssignment==''" [checked]="noteAssignment!=''">Rendu
+      </mat-radio-button>
       <mat-radio-button value="false">Non-rendu</mat-radio-button>
     </mat-radio-group>
   </div>
@@ -45,5 +46,91 @@
   <button mat-stroked-button (click)="onSubmit($event)">
     Ajouter assignment
   </button>
-</form>
+</form> -->
 
+
+
+
+
+
+
+<mat-horizontal-stepper #stepper>
+  <mat-step [stepControl]="firstFormGroup" errorMessage="Tous les champs sont requis.">
+    <form>
+      <ng-template matStepLabel>Fill out your name</ng-template>
+
+      <mat-form-field>
+        <input matInput placeholder="Nom de l'élève" [(ngModel)]="eleveAssignment" name="auteur">
+      </mat-form-field>
+
+      <mat-form-field>
+        <input matInput placeholder="Nom du devoir" [(ngModel)]="nomAssignment" name="nom">
+      </mat-form-field>
+      <div>
+        <button mat-button matStepperNext>Next</button>
+      </div>
+    </form>
+  </mat-step>
+  <mat-step [stepControl]="secondFormGroup" errorMessage="Address is required.">
+    <form>
+      <ng-template matStepLabel>Fill out your address</ng-template>
+
+      <mat-form-field>
+        <mat-label>Matière</mat-label>
+        <mat-select [(ngModel)]="matiereAssignment" name="matiere">
+          <mat-option value="bd">Base de données</mat-option>
+          <mat-option value="technoWeb">Technologies Web</mat-option>
+          <mat-option value="grails">Grails</mat-option>
+          <mat-option value="angular">Angular</mat-option>
+          <mat-option value="ios">iOS</mat-option>
+          <mat-option value="comm">Communication</mat-option>
+          <mat-option value="spring">Spring</mat-option>
+        </mat-select>
+      </mat-form-field>
+
+      <mat-form-field>
+        <input matInput [matDatepicker]="picker" placeholder="Date de rendu" [(ngModel)]="dateRendu" name="date">
+        <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+        <mat-datepicker #picker></mat-datepicker>
+      </mat-form-field>
+
+      <div>
+        <button mat-button matStepperPrevious>Back</button>
+        <button mat-button matStepperNext>Next</button>
+      </div>
+    </form>
+  </mat-step>
+  <mat-step [stepControl]="thirdFormGroup" errorMessage="Tous les champs sont requis.">
+    <form>
+      <ng-template matStepLabel>Fill out your name</ng-template>
+
+      <mat-form-field>
+        <input matInput placeholder="Note sur 20" [(ngModel)]="noteAssignment" name="note">
+      </mat-form-field>
+
+      <mat-form-field>
+        <input matInput placeholder="Remarque" [(ngModel)]="remarqueAssignment" name="remarque">
+      </mat-form-field>
+
+      <div>
+        <mat-radio-group [(ngModel)]="renduAssignment" name="rendu">
+          <mat-radio-button value="true" [disabled]="noteAssignment==''" [checked]="noteAssignment!=''">Rendu
+          </mat-radio-button>
+          <mat-radio-button value="false">Non-rendu</mat-radio-button>
+        </mat-radio-group>
+      </div>
+      <div>
+        <button mat-button matStepperPrevious>Back</button>
+        <button mat-button matStepperNext>Next</button>
+      </div>
+    </form>
+  </mat-step>
+  <mat-step>
+    <ng-template matStepLabel>Done</ng-template>
+    <p>You are now done.</p>
+    <div>
+      <button mat-button matStepperPrevious>Back</button>
+      <button mat-button (click)="stepper.reset()">Reset</button>
+    </div>
+  </mat-step>
+</mat-horizontal-stepper>

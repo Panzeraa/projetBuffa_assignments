@@ -8,7 +8,7 @@
   <mat-tab-group mat-align-tabs="start">
     <mat-tab label="Rendu">
       <cdk-virtual-scroll-viewport #scroller itemSize="96" class="viewport" id="infinite-scroll">
-        <mat-list *cdkVirtualFor="let assignment of assignments">
+        <mat-list *cdkVirtualFor="let assignment of assignmentsRendu">
           <nav><a routerLink="/assignment/{{assignment.id}}">
               <h3 mat-subheader>Date de rendu {{assignment.dateDeRendu | date}}</h3>
               <mat-list-item>
@@ -25,7 +25,22 @@
       </cdk-virtual-scroll-viewport>
     </mat-tab>
     <mat-tab label="Non-rendu">
-
+      <cdk-virtual-scroll-viewport #scrollerNonRendu itemSize="96" class="viewport" id="infinite-scroll">
+        <mat-list *cdkVirtualFor="let assignment of assignmentsNonRendu">
+          <nav><a routerLink="/assignment/{{assignment.id}}">
+              <h3 mat-subheader>Date de rendu {{assignment.dateDeRendu | date}}</h3>
+              <mat-list-item>
+                <p appRendu *ngIf="assignment.rendu; else nonsoumis">
+                  {{assignment.nom}} rendu.
+                </p>
+                <mat-divider></mat-divider>
+                <ng-template #nonsoumis>
+                  <p>Devoir intitulé {{assignment.nom}} non rendu.</p>
+                </ng-template>
+              </mat-list-item>
+            </a></nav>
+        </mat-list>
+      </cdk-virtual-scroll-viewport>
     </mat-tab>
   </mat-tab-group>
 

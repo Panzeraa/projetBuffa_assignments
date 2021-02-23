@@ -3,7 +3,7 @@ import {NgModule, ViewChild} from '@angular/core';
 
 import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-
+import { ReactiveFormsModule } from '@angular/forms';
 import {MatToolbarModule} from '@angular/material/toolbar';
 import {MatButtonModule} from '@angular/material/button';
 import {MatRadioModule} from '@angular/material/radio';
@@ -20,6 +20,7 @@ import {MatCheckboxModule} from '@angular/material/checkbox';
 import {MatSlideToggleModule} from '@angular/material/slide-toggle';
 import {MatMenuModule} from '@angular/material/menu';
 import {MatTabsModule} from '@angular/material/tabs';
+import {MatStepperModule} from '@angular/material/stepper';
 import { AssignmentsComponent } from './assignments/assignments.component';
 import { RenduDirective } from './shared/rendu.directive';
 import { FormsModule } from '@angular/forms';
@@ -63,8 +64,9 @@ const routes: Routes = [
     MatDatepickerModule, MatNativeDateModule,
     MatListModule, MatCardModule, MatSelectModule,
     MatCheckboxModule, MatSlideToggleModule,
-    MatToolbarModule,MatMenuModule,MatTabsModule,
+    MatToolbarModule,MatMenuModule,MatTabsModule,MatStepperModule,
     FormsModule, HttpClientModule,
+    ReactiveFormsModule,
     RouterModule.forRoot(routes)
   ],
   providers: [],

@@ -49,8 +49,8 @@ export class AssignmentsService {
 
   uri = 'http://localhost:8010/api/assignments';
 
-  getAssignments(nextPage : Number = 1,limit:Number = 10): Observable<Object> {
-    return this.http.get<Object>(this.uri + `?page=${nextPage}&limit=${limit}`)
+  getAssignments(nextPage : Number = 1,limit:Number = 10, rendu:Boolean = false): Observable<Object> {
+    return this.http.get<Object>(this.uri + `?page=${nextPage}&limit=${limit}&rendu=${rendu?1:0}`)
   }
   getAssignment(id): Observable<Assignment> {
     return this.http.get<Assignment>(this.uri + '/' + id)
