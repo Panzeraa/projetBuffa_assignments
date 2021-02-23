@@ -20,6 +20,10 @@
   align-self: flex-end;
 }
 
-#infinite-scroll{
+/* #infinite-scroll{
   height:500px;
+} */
+
+.infinite_scroll{
+  height:calc(100vh - 48px - 65px);
 }

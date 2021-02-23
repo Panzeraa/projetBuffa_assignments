@@ -44,7 +44,7 @@ export class AssignmentsComponent implements OnInit, AfterViewInit {
       filter(([y1, y2]) => (y2 < y1 && y2 < 140)),
       throttleTime(200)
     ).subscribe(() => {
-      this.ngZone.run(() => {
+      this.ngZoneNonRendu.run(() => {
         this.getAssignmentsNonRendu();
       })
     })

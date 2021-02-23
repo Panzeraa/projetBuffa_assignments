@@ -5,7 +5,7 @@ function getAssignments(req, res) {
   
   let rendu = req.query.rendu;
   console.log(rendu)
-  rendu = Boolean(Number(rendu));
+  rendu = Boolean(parseInt(rendu));
   console.log(rendu)
   var aggregateQuery = Assignment.aggregate([{ $match: { rendu: rendu} }]);
   Assignment.aggregatePaginate(
