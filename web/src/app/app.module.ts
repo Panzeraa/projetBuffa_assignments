@@ -21,6 +21,8 @@ import {MatSlideToggleModule} from '@angular/material/slide-toggle';
 import {MatMenuModule} from '@angular/material/menu';
 import {MatTabsModule} from '@angular/material/tabs';
 import {MatStepperModule} from '@angular/material/stepper';
+import {MatGridListModule} from '@angular/material/grid-list';
+import {DragDropModule} from '@angular/cdk/drag-drop';
 import { AssignmentsComponent } from './assignments/assignments.component';
 import { RenduDirective } from './shared/rendu.directive';
 import { FormsModule } from '@angular/forms';
@@ -65,6 +67,7 @@ const routes: Routes = [
     MatListModule, MatCardModule, MatSelectModule,
     MatCheckboxModule, MatSlideToggleModule,
     MatToolbarModule,MatMenuModule,MatTabsModule,MatStepperModule,
+    MatGridListModule,DragDropModule,
     FormsModule, HttpClientModule,
     ReactiveFormsModule,
     RouterModule.forRoot(routes)
