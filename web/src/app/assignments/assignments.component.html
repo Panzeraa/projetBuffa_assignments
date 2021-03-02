@@ -12,7 +12,7 @@
             
             <mat-list-item>
               <mat-icon mat-list-icon color="error">error</mat-icon>
-              <div mat-line>{{assignment.nom}}</div>
+              <div mat-line>{{assignment.name}}</div>
               <div mat-line> {{assignment.dateDeRendu | date}} </div>
               <mat-divider></mat-divider>
             </mat-list-item>
@@ -27,7 +27,7 @@
           <a class="list_nonrendu" *ngFor="let assignment of assignmentsRendu" cdkDrag routerLink="/assignment/{{assignment.id}}">
             <mat-list-item>
               <mat-icon mat-list-icon style="color: lightgreen;">check_circle</mat-icon>
-              <div mat-line>{{assignment.nom}}</div>
+              <div mat-line>{{assignment.name}} - note : {{assignment.note}}/20</div>
               <div mat-line> {{assignment.dateDeRendu | date}} </div>
               <mat-divider></mat-divider>
             </mat-list-item>

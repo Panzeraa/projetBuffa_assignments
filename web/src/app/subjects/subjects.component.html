@@ -1,7 +1,10 @@
 <main class="container">
-  <nav><a routerLink="/subject/{{subject.id}}">
+  <!-- <nav><a routerLink="/subject/{{subject.id}}">
     <h3 mat-subheader>Enseignement </h3>
   
   </a>
-</nav>
+</nav> -->
+<h3 *ngFor="let subject of subjectsService.subjects ">
+  {{subject.name}}
+</h3>
 </main>
