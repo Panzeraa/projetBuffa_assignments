@@ -4,42 +4,50 @@
         Ajouter un devoir
       </button>
     </a></nav> -->
-
-  <mat-tab-group mat-align-tabs="start">
-    <mat-tab label="Rendu">
-      <cdk-virtual-scroll-viewport #scroller itemSize="96" class="viewport" id="infinite-scroll" class="infinite_scroll">
-        <mat-list *cdkVirtualFor="let assignment of assignmentsRendu">
-          <nav><a routerLink="/assignment/{{assignment.id}}">
-              <h3 mat-subheader>Date de rendu {{assignment.dateDeRendu | date}}</h3>
-              <mat-list-item>
-                <p appRendu >
-                  {{assignment.nom}} rendu.
-                </p>
-                <mat-divider></mat-divider>
-              </mat-list-item>
-            </a></nav>
+  <div class="assignment_container" cdkDropListGroup>
+    <div class="assignment_flex">
+      <cdk-virtual-scroll-viewport #scrollerNonRendu itemSize="96" id="infinite-scroll2" class="infinite_scroll">
+        <mat-list cdkDropList [cdkDropListData]="assignmentsNonRendu" (cdkDropListDropped)="drop($event)">
+          <a class="list_nonrendu" *ngFor="let assignment of assignmentsNonRendu" cdkDrag routerLink="/assignment/{{assignment.id}}">
+            
+            <mat-list-item>
+              <mat-icon mat-list-icon color="error">error</mat-icon>
+              <div mat-line>{{assignment.nom}}</div>
+              <div mat-line> {{assignment.dateDeRendu | date}} </div>
+              <mat-divider></mat-divider>
+            </mat-list-item>
+          </a>
         </mat-list>
       </cdk-virtual-scroll-viewport>
+    </div>
+    <div class="assignment_flex">
+      <cdk-virtual-scroll-viewport #scroller itemSize="96" class="viewport" id="infinite-scroll"
+        class="infinite_scroll">
+        <mat-list cdkDropList [cdkDropListData]="assignmentsRendu" (cdkDropListDropped)="drop($event)">
+          <a class="list_nonrendu" *ngFor="let assignment of assignmentsRendu" cdkDrag routerLink="/assignment/{{assignment.id}}">
+            <mat-list-item>
+              <mat-icon mat-list-icon style="color: lightgreen;">check_circle</mat-icon>
+              <div mat-line>{{assignment.nom}}</div>
+              <div mat-line> {{assignment.dateDeRendu | date}} </div>
+              <mat-divider></mat-divider>
+            </mat-list-item>
+          </a>
+        </mat-list>
+      </cdk-virtual-scroll-viewport>
+    </div>
+  </div>
+  <!-- 
+  <mat-tab-group mat-align-tabs="start">
+    <mat-tab label="Rendu">
+      
     </mat-tab>
 
     <mat-tab label="Non-rendu">
-      <cdk-virtual-scroll-viewport #scrollerNonRendu itemSize="96"  id="infinite-scroll2" class="infinite_scroll">
-        <mat-list *cdkVirtualFor="let assignment of assignmentsNonRendu">
-          <nav><a routerLink="/assignment/{{assignment.id}}">
-              <h3 mat-subheader>Date de rendu {{assignment.dateDeRendu | date}}</h3>
-              <mat-list-item>
-                <p>
-                  Devoir intitulé {{assignment.nom}} non rendu.
-                </p>
-                <mat-divider></mat-divider>
-              </mat-list-item>
-            </a></nav>
-        </mat-list>
-      </cdk-virtual-scroll-viewport>
+  
     </mat-tab>
 
 
-  </mat-tab-group>
+  </mat-tab-group> -->
 
 
 </main>

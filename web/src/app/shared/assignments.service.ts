@@ -14,6 +14,7 @@ export class AssignmentsService {
   constructor(private logginService: LoggingService,
               private http: HttpClient) { }
 
+
   assignments: Assignment[] = [
     {
       id: 1,

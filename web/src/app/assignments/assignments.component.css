@@ -25,5 +25,17 @@
 } */
 
 .infinite_scroll{
-  height:calc(100vh - 48px - 65px);
+  height:calc(100vh - 65px);
+}
+
+.assignment_container{
+  display: flex;
+}
+
+.assignment_flex{
+  flex:auto;
+}
+
+.list_nonrendu{
+  text-decoration: none;
 }
