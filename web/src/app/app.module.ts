@@ -32,6 +32,10 @@ import { AuthGuard } from './shared/auth.guard';
 import { HttpClientModule } from '@angular/common/http';
 import {ScrollingModule} from '@angular/cdk/scrolling';
 import { LoginComponent } from './login/login.component';
+import { SubjectsComponent } from './subjects/subjects.component';
+import { AddSubjectComponent } from './subjects/add-subject/add-subject.component';
+import { EditSubjectComponent } from './subjects/edit-subject/edit-subject.component';
+import { DetailSubjectComponent } from './subjects/detail-subject/detail-subject.component';
 
 const routes: Routes = [
   {path: '', component: AssignmentsComponent},
@@ -42,7 +46,17 @@ const routes: Routes = [
     path: 'assignment/:id/edit',
     component: EditAssignmentComponent,
     canActivate: [AuthGuard]
-  }
+  },
+  {path: 'subjects', component: SubjectsComponent},
+  {path: 'subjects/:id', component: DetailSubjectComponent},
+  {
+    path: 'subjects/:id/edit',
+    component: EditSubjectComponent,
+    canActivate: [AuthGuard]
+  },
+  {path: 'subjects/add', component: AddSubjectComponent}
+
+
 ];
 
 @NgModule({
@@ -53,7 +67,11 @@ const routes: Routes = [
     AssignmentDetailComponent,
     AddAssignmentComponent,
     EditAssignmentComponent,
-    LoginComponent
+    LoginComponent,
+    SubjectsComponent,
+    AddSubjectComponent,
+    EditSubjectComponent,
+    DetailSubjectComponent
   ],
   imports: [
     ScrollingModule,

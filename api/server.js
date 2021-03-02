@@ -6,6 +6,7 @@ let app = express();
 let bodyParser = require("body-parser");
 let assignment = require("./routes/assignments");
 let utilisateur = require("./routes/utilisateurs");
+let subject = require("./routes/subjects");
 
 let mongoose = require("mongoose");
 mongoose.Promise = global.Promise;
@@ -57,6 +58,8 @@ const prefix = "/api";
 app.route(prefix + "/utilisateurs").post(utilisateur.login);
 
 app.route(prefix + "/assignments").get(assignment.getAssignments);
+
+app.route(prefix + "/subjects").get(subject.getSubjects);
 
 app
   .route(prefix + "/assignments/:id")

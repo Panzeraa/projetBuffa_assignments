@@ -10,16 +10,12 @@
   <button mat-icon-button class="example-icon" aria-label="Example icon-button with share icon">
     <mat-icon>share</mat-icon>
   </button> -->
+  <button mat-icon-button [routerLink]="'subjects'">
+    <mat-icon>import_contacts</mat-icon>
+  </button>
   <button mat-icon-button [routerLink]="'/add'">
-
-    <!-- <a routerLink="/add">
-      <button mat-flat-button class="ajouterBtn" color="accent">
-        Ajouter un devoir
-      </button>
-    </a> -->
-
     <mat-icon>add_circle</mat-icon>
-</button>
+  </button>
   <app-login></app-login>
 </mat-toolbar>
 <!-- <h1><a routerLink="/home">{{titre}}</a></h1>

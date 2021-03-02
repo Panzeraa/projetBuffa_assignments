@@ -2,26 +2,13 @@ let Subject = require("../model/subjectModel");
 
 // Récupérer tous les subjects (GET)
 function getSubjects(req, res) {
-  
-  let name = req.query.name;
-  console.log(name)
-  rendu = Boolean(Number(rendu));
-  console.log(rendu)
-  var aggregateQuery = Subject.aggregate([{ $match: { rendu: rendu} }]);
-  Subject.aggregatePaginate(
-    aggregateQuery,
-    {
-      page: parseInt(req.query.page) || 1,
-      limit: parseInt(req.query.limit) || 10,
-    },
-    (err, subjects) => {
-      if (err) {
-        res.send(err);
-      }
-      // console.log(subjects);
-      res.send(subjects);
+
+  Subject.find({}, (err, subject) => {
+    if (err) {
+      res.send(err);
     }
-  );
+    res.json(subject);
+  });
 }
 
 // Récupérer un subject par son id (GET)
