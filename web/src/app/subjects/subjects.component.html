@@ -1,10 +1,20 @@
 <main class="container">
-  <!-- <nav><a routerLink="/subject/{{subject.id}}">
-    <h3 mat-subheader>Enseignement </h3>
   
-  </a>
-</nav> -->
-<h3 *ngFor="let subject of subjectsService.subjects ">
-  {{subject.name}}
-</h3>
+     <h2>Enseignement</h2> 
+      <div style="margin: 10%;" class="subjects" *ngFor="let subject of subjectsService.subjects ">
+        <mat-list class="mat-double-line">
+          <mat-list-item>
+            
+            <img src='../assets/img/defautProf.png' height="80px" width="80px" />
+   
+            <div style="margin: 20%;" class="mat-list-item-text">
+              <p id="subject">{{subject.name}}</p>
+              <p id="teacher">{{subject.idTeacher}}</p>
+            </div>
+    
+            <img src='../assets/img/{{subject.name}}.png' height="80px" width="80px" />
+
+          </mat-list-item>
+       </mat-list> 
+      </div>
 </main>

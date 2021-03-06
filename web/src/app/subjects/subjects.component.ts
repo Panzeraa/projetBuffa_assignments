@@ -11,8 +11,7 @@ export class SubjectsComponent implements OnInit {
   constructor(public subjectsService: SubjectsService) { }
 
   ngOnInit(): void {
-
-    this.subjectsService.getSubjects()
+    this.subjectsService.getSubjects();
   }
 
 }
