@@ -1,19 +1,20 @@
 <main class="container">
   
      <h2>Enseignement</h2> 
-      <div style="margin: 10%;" class="subjects" *ngFor="let subject of subjectsService.subjects ">
+      <div class="subjects" *ngFor="let subject of subjectsService.subjects " style="margin-top: 2%;">
         <mat-list class="mat-double-line">
           <mat-list-item>
-            
-            <img src='../assets/img/defautProf.png' height="80px" width="80px" />
+            <div style="display: flex; justify-content: space-between; width: 100%; margin: 20%;">
+              <img src='../assets/img/defautProf.png' style="float: left;" height="80px" width="80px" />
    
-            <div style="margin: 20%;" class="mat-list-item-text">
-              <p id="subject">{{subject.name}}</p>
-              <p id="teacher">{{subject.idTeacher}}</p>
+              <div class="mat-list-item-text" style="text-align: center;">
+                <div mat-line id="subject">{{subject.name}}</div>
+                <div mat-line id="teacher">Par : {{subject.teacher.name}}</div>
+              </div>
+      
+              <img src='{{subjectsService.uriImg}}?id={{subject._id}}' style="float: right;" height="80px" width="80px" />
             </div>
-    
-            <img src='{{subjectsService.uriImg}}?id={{subject._id}}' height="80px" width="80px" />
-
+            <br>
           </mat-list-item>
        </mat-list> 
       </div>

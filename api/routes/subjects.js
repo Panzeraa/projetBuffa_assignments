@@ -2,13 +2,25 @@ let Subject = require("../model/subjectModel");
 
 // Récupérer tous les subjects (GET)
 function getSubjects(req, res) {
-
-  Subject.find({}, (err, subject) => {
-    if (err) {
-      res.send(err);
+  var aggregateQuery = Subject.aggregate([
+  { "$addFields": { "idTeacher": { "$toObjectId": "$idTeacher" } } },
+  {
+    $lookup: {
+      from: "teachers",
+      localField: "idTeacher",
+      foreignField: "_id",
+      as: "teacher"
     }
-    res.json(subject);
-  });
+  },
+  { $unwind: { path: "$teacher" } },
+  ],
+    (err, subjects) => {
+      if (err) {
+        res.send(err);
+      }
+      res.send(subjects);
+    }
+  );
 }
 
 // Récupérer un subject par son id (GET)
