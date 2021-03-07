@@ -38,9 +38,8 @@ function getSubject(req, res) {
 // Ajout d'un subject (POST)
 function postSubject(req, res) {
   let subject = new Subject();
-  subject.id = req.body.id;
   subject.name = req.body.name;
-  subject.teacher = req.body.teacher;
+  subject.idTeacher = req.body.idTeacher;
 
   console.log("POST subject reçu :");
   console.log(subject);

@@ -40,6 +40,7 @@ import { AddSubjectComponent } from './subjects/add-subject/add-subject.componen
 import { EditSubjectComponent } from './subjects/edit-subject/edit-subject.component';
 import { DetailSubjectComponent } from './subjects/detail-subject/detail-subject.component';
 import { NoteAssignmentDialog } from './assignments/assignments.component';
+import { TeachersComponent } from './teachers/teachers.component';
 
 const routes: Routes = [
   {path: '', component: AssignmentsComponent},
@@ -76,7 +77,8 @@ const routes: Routes = [
     AddSubjectComponent,
     EditSubjectComponent,
     DetailSubjectComponent,
-    NoteAssignmentDialog
+    NoteAssignmentDialog,
+    TeachersComponent
   ],
   imports: [
     ScrollingModule,

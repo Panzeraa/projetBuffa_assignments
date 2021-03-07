@@ -22,4 +22,14 @@ export class SubjectsService {
       this.subjects = data;
     })
   }
+  
+  addSubject(subject: Subject): Observable<any> {
+    // this.assignments.push(assignment);
+
+    this.logginService.log(subject.name, 'ajouté');
+
+    // return of("assignmet ajouté");
+
+    return this.http.post(this.uri, subject);
+  }
 }

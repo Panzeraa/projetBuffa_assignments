@@ -1,9 +1,24 @@
-<p>add-subject works!</p>
-<p>add-subject works!</p>
-<p>add-subject works!</p>
-<p>add-subject works!</p>
-<p>add-subject works!</p>
-<p>add-subject works!</p>
-<p>add-subject works!</p>
-<p>add-subject works!</p>
-<p>add-subject works!</p>
+<form (ngSubmit)="onSubmit()" style="margin-left: 10%; margin-top: 3%;">
+  <h2>Création d'un enseignement</h2>
+
+  <ng-template matStepLabel>Nom de l'élève et du devoir</ng-template>
+
+  <mat-form-field>
+    <input matInput placeholder="Nom de l'enseignement" [(ngModel)]="nameSubject" name="name">
+  </mat-form-field>
+<br>
+  <mat-form-field>
+    <mat-label>Enseignant(e)</mat-label>
+    <mat-select [(ngModel)]="teacherSubject" name="teacher">
+      <mat-option *ngFor="let teacher of teachersService.teachers" value="{{teacher._id}}">{{teacher.name}}</mat-option>
+    </mat-select>
+  </mat-form-field>
+
+  <div style="margin-top: 3%;">
+    <button mat-raised-button type="submit">Créer</button>
+  </div>
+</form>
+
+
+
+
