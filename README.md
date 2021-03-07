@@ -45,12 +45,17 @@ Connexion en tant qu'utilisateur (login: **test** et password: **password**) afi
 
 Les assignments sont divisés en deux catégories : les non-rendus et les rendus.
 Les assigments non-rendus ne possédant pas de note se trouve à gauche de l'écran et à droite se trouvent les rendus.
+
 Afin de passer un assignment non-rendu à l'état de rendu, on **drag and drop** l'assignment voulu puis on complète ses propriétés, à savoir sa note et sa remarque sur la boîte de dialogue qui apparait. L'assignment devient rendu et apparaitra dans l'onglet "Rendu" de droite.
 
-### Création d'un Assignment
+### Gestion d'un Assignment
 
-Un **formulaire de type Stepper** (formulaire en plusieurs étapes) permet l'ajout d'Assignments.
+La création d'un Assignment se fait par un **formulaire de type Stepper** (formulaire en plusieurs étapes).
 
-### Création d'un Subject 
+Il est possible de modifier et supprimer un assignment.
+
+### Gestion d'un Subject 
 
 Les sujets peuvent être crées. On leurs attribut un nom, un enseignant (présent en base) et une image.
+
+Il est possible de modifier et supprimer un subject.
