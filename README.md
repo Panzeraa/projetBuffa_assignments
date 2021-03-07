@@ -58,4 +58,4 @@ Il est possible de modifier et supprimer un assignment.
 
 Les sujets peuvent être crées. On leurs attribut un nom, un enseignant (présent en base) et une image.
 
-Il est possible de modifier et supprimer un subject.
+Il est possible de modifier (**++importer** une image)et supprimer un subject.
