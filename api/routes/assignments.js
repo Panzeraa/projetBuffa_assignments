@@ -3,6 +3,10 @@ let path = require('path');
 let Assignment = require("../model/assignmentModel");
 
 // Récupérer un assignment par son id (GET)
+function uploadImage(req, res) {
+
+}
+// Récupérer un assignment par son id (GET)
 function getImage(req, res) {
   console.log("GET Image");
   let _filename = req.query.id
@@ -225,4 +229,5 @@ module.exports = {
   updateAssignment,
   deleteAssignment,
   getImage,
+  uploadImage
 };

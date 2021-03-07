@@ -74,7 +74,7 @@ function updateSubject(req, res) {
 
 // suppression d'un subject (DELETE)
 function deleteSubject(req, res) {
-    Subject.findByIdAndRemove(req.params.id, (err, subject) => {
+    Subject.findByIdAndRemove(ObjectID(req.params.id), (err, subject) => {
     if (err) {
       res.send(err);
     }

@@ -18,6 +18,10 @@ export class AssignmentsService {
 
   uri = 'http://localhost:8010/api/';
 
+  sendFile(file): Observable<Object>{
+    return this.http.post(this.uri + "image", file);
+  }
+
   getAssignments(nextPage: Number = 1, limit: Number = 10, rendu: Boolean = false): Observable<Object> {
     return this.http.get<Object>(this.uri + "assignments" + `?page=${nextPage}&limit=${limit}&rendu=${rendu ? 1 : 0}`)
   }

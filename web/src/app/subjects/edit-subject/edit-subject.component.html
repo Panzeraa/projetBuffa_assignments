@@ -1,12 +1,19 @@
-<div class="container" *ngIf="subject"  style="margin-left: 10%; margin-top: 3%;">
-    <h1>Edition de l'enseignement {{subject.nom}}</h1>
-    <form ngForm class="form">
+<div class="container" *ngIf="subject" style="margin-left: 10%; margin-top: 3%;">
+  <h1>Edition de l'enseignement {{subject.nom}}</h1>
+  <img style="margin-right: 10px;" src='{{assignmentService.uri}}image?id={{subject._id}}' height="120px"
+    width="120px" />
+    <input type="file"
+       id="avatar" name="avatar"
+       accept="image/png, image/jpeg"
+       name="uploadfile"
+       (change)="fileChange($event)">
+  <form ngForm class="form">
     <mat-form-field>
       <input matInput placeholder="name" [(ngModel)]="subject.name" name="name">
     </mat-form-field>
+
     <br>
     <button mat-stroked-button (click)="onSaveSubject($event)">Save</button>
     <button mat-stroked-button (click)="onDeleteSubject($event)">Delete</button>
-    </form>
-  </div>
-  
+  </form>
+</div>

@@ -1,25 +1,27 @@
 <main class="container">
-  
-     <h2>Enseignement</h2> 
-      <div class="subjects" *ngFor="let subject of subjectsService.subjects " style="margin-top: 2%;">
-        <mat-list class="mat-double-line">
-          <mat-list-item>
-            <div style="display: flex; justify-content: space-between; width: 100%; margin: 20%;">
-              <img src='../assets/img/defautProf.png' style="float: left;" height="80px" width="80px" />
-   
-              <div class="mat-list-item-text" style="text-align: center;">
-                <div mat-line id="subject">{{subject.name}}</div>
-                <div mat-line id="teacher">Par : {{subject.teacher.name}}</div>
-              </div>
-      
-              <img src='{{subjectsService.uriImg}}?id={{subject._id}}' style="float: right;" height="80px" width="80px" />
-            </div>
-            <br>
-          </mat-list-item>
-       </mat-list> 
-      </div>
 
-      
+  <h2>Enseignement</h2>
+  <div class="subjects" *ngFor="let subject of subjectsService.subjects " style="margin-top: 2%;">
+    <mat-list class="mat-double-line">
+      <mat-list-item>
+
+        <div style="display: flex; justify-content: space-between; width: 100%; margin: 20%;">
+          <img src='../assets/img/defautProf.png' style="float: left;" height="80px" width="80px" />
+          <a routerLink="/subject/{{subject._id}}/edit">
+            <div class="mat-list-item-text" style="text-align: center;">
+              <div mat-line id="subject">{{subject.name}}</div>
+              <div mat-line id="teacher">Par : {{subject.teacher.name}}</div>
+            </div>
+          </a>
+          <img src='{{subjectsService.uriImg}}?id={{subject._id}}' style="float: right;" height="80px" width="80px" />
+        </div>
+        <br>
+
+      </mat-list-item>
+    </mat-list>
+  </div>
+
+
 </main>
 <button mat-fab color="primary" style="position: fixed; right: 1%; bottom : 2%; " [routerLink]="'/subjects/add'">
   <mat-icon>add</mat-icon>

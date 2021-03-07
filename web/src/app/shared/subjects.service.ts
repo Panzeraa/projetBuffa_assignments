@@ -45,7 +45,7 @@ export class SubjectsService {
 
   updateSubject(subject: Subject): Observable<any> {
     this.logginService.log(subject.name, 'modifié');
-    return this.http.put(this.uri + 'subjects', subject);
+    return this.http.put(this.uri + 'subject', subject);
   }
 
   deleteSubject(subject: Subject): Observable<any> {
