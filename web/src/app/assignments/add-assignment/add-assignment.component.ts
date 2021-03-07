@@ -48,6 +48,15 @@ export class AddAssignmentComponent implements OnInit {
     // });
   }
 
+  checkRendu(){
+    this.renduAssignment = true;
+  }
+
+  uncheckRendu(){
+    this.noteAssignment = null;
+    this.remarqueAssignment = "";
+  }
+
   saveAssignment(event) {
     event.preventDefault();
 
