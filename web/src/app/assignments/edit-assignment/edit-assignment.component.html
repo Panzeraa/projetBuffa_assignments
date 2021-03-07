@@ -64,18 +64,26 @@
       </mat-form-field>
 
       <mat-form-field>
-        <input matInput type="number" placeholder="Note sur 20" [(ngModel)]="assignment.note" name="note">
+        <input matInput type="number" placeholder="Note sur 20" [(ngModel)]="assignment.note" name="note" (change)="checkRendu()">
       </mat-form-field>
 
       <mat-form-field>
-        <textarea matInput rows="3" [(ngModel)]="assignment.remarque" name="remarque" placeholder="Ex. Bon devoir"></textarea>
+        <textarea matInput rows="3" [(ngModel)]="assignment.remarque" name="remarque" placeholder="Ex. Bon devoir" (change)="checkRendu()"></textarea>
       </mat-form-field>
 
-      <mat-radio-group [(ngModel)]="assignment.rendu" name="rendu">
-        <mat-radio-button value="true" [disabled]="assignment.note==-1" [checked]="assignment.note!=-1">Rendu
-        </mat-radio-button>
-        <mat-radio-button value="false">Non-rendu</mat-radio-button>
-      </mat-radio-group>
+      <div>
+        <mat-checkbox name="renduAssignment" [(ngModel)]="assignment.rendu" (change)="uncheckRendu()">Rendu</mat-checkbox>
+      </div>
+
+      <!-- <mat-form-field>
+        <input matInput placeholder="Note sur 20" [(ngModel)]="noteAssignment" (change)="checkRendu()" name="note">
+      </mat-form-field>
+
+      <mat-form-field>
+        <input matInput placeholder="Remarque" [(ngModel)]="remarqueAssignment" (change)="checkRendu()" name="remarque">
+      </mat-form-field> -->
+
+      
 
 
 

@@ -47,6 +47,15 @@ export class EditAssignmentComponent implements OnInit {
     this.assignmentService.getStudents();
   }
 
+  checkRendu(){
+    this.assignment.rendu = true;
+  }
+
+  uncheckRendu(){
+    this.assignment.remarque = null;
+    this.assignment.note = null;
+  }
+
   onSaveAssignment(event) {
     event.preventDefault();
 

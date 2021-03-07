@@ -103,19 +103,15 @@
       <ng-template matStepLabel>Rendu du devoir</ng-template>
 
       <mat-form-field>
-        <input matInput placeholder="Note sur 20" [(ngModel)]="noteAssignment" name="note">
+        <input matInput placeholder="Note sur 20" [(ngModel)]="noteAssignment" (change)="checkRendu()" name="note">
       </mat-form-field>
 
       <mat-form-field>
-        <input matInput placeholder="Remarque" [(ngModel)]="remarqueAssignment" name="remarque">
+        <input matInput placeholder="Remarque" [(ngModel)]="remarqueAssignment" (change)="checkRendu()" name="remarque">
       </mat-form-field>
 
       <div>
-        <mat-radio-group [(ngModel)]="renduAssignment" name="rendu">
-          <mat-radio-button value="true" [disabled]="noteAssignment==null" [checked]="noteAssignment!=null">Rendu
-          </mat-radio-button>
-          <mat-radio-button value="false">Non-rendu</mat-radio-button>
-        </mat-radio-group>
+        <mat-checkbox name="renduAssignment" [(ngModel)]="renduAssignment" (change)="uncheckRendu()">Rendu</mat-checkbox>
       </div>
       <div>
         <button mat-button matStepperPrevious>Précédent</button>
