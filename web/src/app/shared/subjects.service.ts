@@ -48,9 +48,9 @@ export class SubjectsService {
     return this.http.put(this.uri + 'subjects', subject);
   }
 
-  deleteSubject(assignment: Subject): Observable<any> {
-    this.logginService.log(assignment.name, 'supprimé');
-    const deleteURI = this.uri + 'subjects/' + assignment._id;
+  deleteSubject(subject: Subject): Observable<any> {
+    this.logginService.log(subject.name, 'supprimé');
+    const deleteURI = this.uri + 'subject/' + subject._id;
     return this.http.delete(deleteURI);
   }
 

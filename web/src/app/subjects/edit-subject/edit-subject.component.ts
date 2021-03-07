@@ -45,11 +45,13 @@ export class EditSubjectComponent implements OnInit {
 
   onDeleteSubject() {
     this.subjectService.deleteSubject(this.subject)
-    .subscribe((message) => {
-      console.log(message);
-      this.subject = null;
-      this.router.navigate(['home']);
-    });
+      .subscribe((message) => {
+        console.log(message);
+        this.subject = null;
+        this.router.navigate(['home']); // dans le subscribe pour n'afficher
+        // la page d'accueil que quand le dete
+        // a bien été effectué dans MongoDB
+      });
   }
 }
             
