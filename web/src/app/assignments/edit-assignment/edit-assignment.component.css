@@ -1,0 +1,11 @@
+
+.container{
+    margin: 15px;
+  }
+
+  .fw_input{
+      width: 100%;
+  }
+  mat-form-field{
+      width: 100%;
+  }

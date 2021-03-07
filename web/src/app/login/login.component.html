@@ -3,7 +3,7 @@
 </button>
 <mat-menu #menu="matMenu" style="padding:0px">
     <form>
-        <div class="menu_login" (click)="$event.stopPropagation()">
+        <div class="menu_login" (click)="$event.stopPropagation()" *ngIf="!authService.loggedIn; else loggedView">
             <h2 style="margin: 5px 0">Connexion</h2>
             <mat-form-field style="width: 100%;">
                 <mat-label>Username</mat-label>
@@ -25,6 +25,12 @@
             <button mat-raised-button (click)="login()">Connexion</button>
 
         </div>
+        <ng-template #loggedView>
+            <div class="menu_login" (click)="$event.stopPropagation()">
+                <h2 style="margin: 5px 0">Vous êtes connecté</h2>
+                <button mat-raised-button (click)="logout()">Déconnexion</button>
+            </div>
+        </ng-template>
     </form>
 
 </mat-menu>

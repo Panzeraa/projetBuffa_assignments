@@ -1,7 +1,26 @@
 <div class="container">
   <mat-card *ngIf="assignmentTransmis">
-    <mat-card-title>{{assignmentTransmis.name}}</mat-card-title>
+    <mat-card-title class="title_assignment"><span>{{assignmentTransmis.name}}</span> <span *ngIf="assignmentTransmis.rendu; else elseBlockNote">Note : {{assignmentTransmis.note}}/20</span></mat-card-title>
+    <ng-template #elseBlockNote><span>Aucune note</span></ng-template>
     <mat-card-subtitle>{{assignmentTransmis.dateDeRendu | date}}</mat-card-subtitle>
+
+    <mat-card-content>
+      <h3>Matière</h3>
+      <div>
+        {{assignmentTransmis.subject.name}}
+      </div>
+      <h3>Professeur</h3>
+      <div>
+        {{assignmentTransmis.subject.teacher.name}}
+      </div>
+      <h3>Etudiant</h3>
+      <div>
+        {{assignmentTransmis.student.name}}
+      </div>
+      <div>
+        {{assignmentTransmis.student.email}}
+      </div>
+    </mat-card-content>
     <div id="bottom">
       <mat-checkbox *ngIf="!assignmentTransmis.rendu" (click)="onAssignmentRendu()">
         Devoir rendu

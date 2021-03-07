@@ -60,12 +60,16 @@
       <ng-template matStepLabel>Nom de l'élève et du devoir</ng-template>
 
       <mat-form-field>
-        <input matInput placeholder="Nom de l'élève" [(ngModel)]="eleveAssignment" name="auteur">
+        <input matInput placeholder="Nom du devoir" [(ngModel)]="nomAssignment" name="nom">
       </mat-form-field>
 
       <mat-form-field>
-        <input matInput placeholder="Nom du devoir" [(ngModel)]="nomAssignment" name="nom">
+        <mat-label>Eleve</mat-label>
+        <mat-select [(ngModel)]="eleveAssignment" name="auteur">
+          <mat-option *ngFor="let student of assignmentService.students" value="{{student._id}}"><img style="margin-right: 10px;" src='{{subjectsService.uriImg}}?id={{student._id}}' height="20px" width="20px" />{{student.name}}</mat-option>
+        </mat-select>
       </mat-form-field>
+
       <div>
         <button mat-button matStepperNext>Suivant</button>
       </div>
@@ -78,13 +82,7 @@
       <mat-form-field>
         <mat-label>Matière</mat-label>
         <mat-select [(ngModel)]="matiereAssignment" name="matiere">
-          <mat-option *ngFor="let subject of subjectsService.subjects" value="{{subject._id}}">{{subject.name}}</mat-option>
-          <!-- <mat-option value="technoWeb">Technologies Web</mat-option>
-          <mat-option value="grails">Grails</mat-option>
-          <mat-option value="angular">Angular</mat-option>
-          <mat-option value="ios">iOS</mat-option>
-          <mat-option value="comm">Communication</mat-option>
-          <mat-option value="spring">Spring</mat-option> -->
+          <mat-option *ngFor="let subject of subjectsService.subjects" value="{{subject._id}}"><img style="margin-right: 10px;" src='{{subjectsService.uriImg}}?id={{subject._id}}' height="20px" width="20px" />{{subject.name}}</mat-option>
         </mat-select>
       </mat-form-field>
 
@@ -114,7 +112,7 @@
 
       <div>
         <mat-radio-group [(ngModel)]="renduAssignment" name="rendu">
-          <mat-radio-button value="true" [disabled]="noteAssignment==''" [checked]="noteAssignment!=''">Rendu
+          <mat-radio-button value="true" [disabled]="noteAssignment==null" [checked]="noteAssignment!=null">Rendu
           </mat-radio-button>
           <mat-radio-button value="false">Non-rendu</mat-radio-button>
         </mat-radio-group>
@@ -127,10 +125,10 @@
   </mat-step>
   <mat-step>
     <ng-template matStepLabel>Enregistrer</ng-template>
-    <p>You are now done.</p>
+    <p>Enregistrer ce devoir.</p>
     <div>
       <button mat-button matStepperPrevious>Back</button>
-      <button mat-button>Envoyer</button>
+      <button mat-button (click)="saveAssignment($event)">Envoyer</button>
     </div>
   </mat-step>
 </mat-horizontal-stepper>

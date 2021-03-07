@@ -88,11 +88,20 @@ export class AssignmentsComponent implements OnInit, AfterViewInit {
       });
   }
 
-  openDialog(name: string, id: string): void {
+  openDialog(event: CdkDragDrop<Assignment[]>): void {
+    // event.previousContainer.data[event.previousIndex]['name'], event.previousContainer.data[event.previousIndex]['_id']
     const dialogRef = this.dialog.open(NoteAssignmentDialog, {
       width: '500px',
-      data: { name: name, _id: id }
+      data: { name: event.previousContainer.data[event.previousIndex]['name'], _id: event.previousContainer.data[event.previousIndex]['_id'] }
     });
+
+    // if(!isNaN(note)) {
+    //   console.log("transfer");
+    //   transferArrayItem(event.previousContainer.data,
+    //     event.container.data,
+    //     event.previousIndex,
+    //     event.currentIndex);
+    // }
 
     dialogRef.afterClosed().subscribe(result => {
       console.log('The dialog was closed');
@@ -100,11 +109,19 @@ export class AssignmentsComponent implements OnInit, AfterViewInit {
 
       if (result.hasOwnProperty('note') && result.hasOwnProperty('remarque')) {
         if (result.note >= 0 && result.note <= 20) {
+          result.rendu = true;
           this.assignmentService.updateAssignment(result)
             .subscribe((message) => {
               console.log(message);
-              this.getAssignmentsRendu();
-              this.getAssignmentsNonRendu();
+              console.log("transfer");
+              event.previousContainer.data[event.previousIndex]['note'] = result.note;
+              event.previousContainer.data[event.previousIndex]['remarque'] = result.remarque;
+              transferArrayItem(event.previousContainer.data,
+                event.container.data,
+                event.previousIndex,
+                event.currentIndex);
+              // this.getAssignmentsRendu();
+              // this.getAssignmentsNonRendu();
             });
         }
       }
@@ -120,7 +137,7 @@ export class AssignmentsComponent implements OnInit, AfterViewInit {
       // var note = 5;
       // console.log(event)
       // console.log(event.previousContainer.data[event.previousIndex])
-      this.openDialog(event.previousContainer.data[event.previousIndex]['name'], event.previousContainer.data[event.previousIndex]['_id']);
+      this.openDialog(event);
       // console.log(note);
       // console.log(isNaN(note));
       // if(!isNaN(note)) {

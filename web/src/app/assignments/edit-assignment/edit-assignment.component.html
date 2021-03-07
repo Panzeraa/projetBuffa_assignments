@@ -1,8 +1,8 @@
-<div class="container" *ngIf="assignment">
-  <h1>Edition de l'assignement {{assignment.nom}}</h1>
+<!-- <div class="container" *ngIf="assignment">
+  <h1>Edition de l'assignement {{assignment.name}}</h1>
   <form ngForm class="form">
   <mat-form-field>
-    <input matInput placeholder="nom" [(ngModel)]="assignment.nom" name="nom">
+    <input matInput placeholder="nom" [(ngModel)]="assignment.name" name="nom">
   </mat-form-field>
   <mat-form-field>
     <input matInput [matDatepicker]="picker" placeholder="Date de rendu" [(ngModel)]="assignment.dateDeRendu" name="date">
@@ -14,4 +14,92 @@
     Save
   </button>
   </form>
+</div> -->
+
+<div class="container">
+  <mat-card>
+    <mat-card-title class="title_assignment">Edition de l'assignment {{assignment.name}}</mat-card-title>
+    <mat-card-subtitle>{{assignment.dateDeRendu | date}}</mat-card-subtitle>
+
+    <mat-card-content>
+      <mat-form-field class="fw_input">
+        <input matInput placeholder="nom" [(ngModel)]="assignment.name" name="nom">
+      </mat-form-field>
+      <mat-form-field class="fw_input">
+        <input matInput [matDatepicker]="picker" placeholder="Date de rendu" [(ngModel)]="assignment.dateDeRendu"
+          name="date">
+        <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+        <mat-datepicker #picker></mat-datepicker>
+      </mat-form-field>
+
+
+
+      <mat-form-field>
+        <input matInput placeholder="Nom du devoir" [(ngModel)]="assignment.name" name="nom">
+      </mat-form-field>
+
+      <mat-form-field>
+        <mat-label>Eleve</mat-label>
+        <mat-select [(ngModel)]="assignment.idStudent" name="auteur">
+          <mat-option *ngFor="let student of assignmentService.students" value="{{student._id}}"><img
+              style="margin-right: 10px;" src='{{subjectsService.uriImg}}?id={{student._id}}' height="20px"
+              width="20px" />{{student.name}}</mat-option>
+        </mat-select>
+      </mat-form-field>
+
+      <mat-form-field>
+        <mat-label>Matière</mat-label>
+        <mat-select [(ngModel)]="assignment.idSubject" name="matiere">
+          <mat-option *ngFor="let subject of subjectsService.subjects" value="{{subject._id}}"><img
+              style="margin-right: 10px;" src='{{subjectsService.uriImg}}?id={{subject._id}}' height="20px"
+              width="20px" />{{subject.name}}</mat-option>
+        </mat-select>
+      </mat-form-field>
+
+      <mat-form-field>
+        <input matInput [matDatepicker]="picker" placeholder="Date de rendu" [(ngModel)]="assignment.dateDeRendu"
+          name="date">
+        <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+        <mat-datepicker #picker></mat-datepicker>
+      </mat-form-field>
+
+      <mat-form-field>
+        <input matInput type="number" placeholder="Note sur 20" [(ngModel)]="assignment.note" name="note">
+      </mat-form-field>
+
+      <mat-form-field>
+        <textarea matInput rows="3" [(ngModel)]="assignment.remarque" name="remarque" placeholder="Ex. Bon devoir"></textarea>
+      </mat-form-field>
+
+      <mat-radio-group [(ngModel)]="assignment.rendu" name="rendu">
+        <mat-radio-button value="true" [disabled]="assignment.note==-1" [checked]="assignment.note!=-1">Rendu
+        </mat-radio-button>
+        <mat-radio-button value="false">Non-rendu</mat-radio-button>
+      </mat-radio-group>
+
+
+
+
+      <!-- <h3>Matière</h3>
+      <div>
+        {{assignmentTransmis.subject.name}}
+      </div>
+      <h3>Professeur</h3>
+      <div>
+        {{assignmentTransmis.subject.teacher.name}}
+      </div>
+      <h3>Etudiant</h3>
+      <div>
+        {{assignmentTransmis.student.name}}
+      </div>
+      <div>
+        {{assignmentTransmis.student.email}}
+      </div> -->
+    </mat-card-content>
+    <div id="bottom">
+      <button mat-stroked-button (click)="onSaveAssignment($event)">
+        Save
+      </button>
+    </div>
+  </mat-card>
 </div>

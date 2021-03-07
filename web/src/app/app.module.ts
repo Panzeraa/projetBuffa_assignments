@@ -52,13 +52,13 @@ const routes: Routes = [
     canActivate: [AuthGuard]
   },
   {path: 'subjects', component: SubjectsComponent},
+  {path: 'subjects/add', component: AddSubjectComponent},
   {path: 'subjects/:id', component: DetailSubjectComponent},
   {
     path: 'subjects/:id/edit',
     component: EditSubjectComponent,
     canActivate: [AuthGuard]
-  },
-  {path: 'subjects/add', component: AddSubjectComponent}
+  }
 
 
 ];

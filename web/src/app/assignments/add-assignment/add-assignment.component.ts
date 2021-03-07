@@ -24,7 +24,7 @@ export class AddAssignmentComponent implements OnInit {
   dateRendu: Date;
   eleveAssignment = '';
   matiereAssignment =  '';
-  noteAssignment = '';
+  noteAssignment = null;
   remarqueAssignment = '';
   renduAssignment = false;
 
@@ -32,34 +32,34 @@ export class AddAssignmentComponent implements OnInit {
   secondFormGroup: FormGroup;
   thirdFormGroup: FormGroup;
 
-  constructor(private assignmentService: AssignmentsService, private router: Router, private _formBuilder: FormBuilder, public subjectsService: SubjectsService) { }
+  constructor(public assignmentService: AssignmentsService, private router: Router, private _formBuilder: FormBuilder, public subjectsService: SubjectsService) { }
 
   ngOnInit(): void {
     this.subjectsService.getSubjects();
-    this.firstFormGroup = this._formBuilder.group({
-      firstCtrl: ['', Validators.required]
-    });
-    this.secondFormGroup = this._formBuilder.group({
-      secondCtrl: ['', Validators.required]
-    });
-    this.thirdFormGroup = this._formBuilder.group({
-      secondCtrl: ['', Validators.required]
-    });
+    this.assignmentService.getStudents();
+    // this.firstFormGroup = this._formBuilder.group({
+    //   firstCtrl: ['', Validators.required]
+    // });
+    // this.secondFormGroup = this._formBuilder.group({
+    //   secondCtrl: ['', Validators.required]
+    // });
+    // this.thirdFormGroup = this._formBuilder.group({
+    //   secondCtrl: ['', Validators.required]
+    // });
   }
 
-  onSubmit(event) {
+  saveAssignment(event) {
     event.preventDefault();
 
     console.log('onSubmit dans add-assignment');
     const nouvelAssignment = new Assignment();
 
-    nouvelAssignment.id = this.assignmentService.getNewId();
 
-    nouvelAssignment.eleve = this.eleveAssignment;
-    nouvelAssignment.nom = this.nomAssignment;
-    nouvelAssignment.matiere = this.matiereAssignment;
+    nouvelAssignment.idStudent = this.eleveAssignment;
+    nouvelAssignment.name = this.nomAssignment;
+    nouvelAssignment.idSubject = this.matiereAssignment;
     nouvelAssignment.dateDeRendu = this.dateRendu;
-    nouvelAssignment.note = this.noteAssignment;
+    nouvelAssignment.note = this.noteAssignment==null?-1:this.noteAssignment;
     nouvelAssignment.remarque = this.remarqueAssignment;
     nouvelAssignment.rendu = this.renduAssignment;
 

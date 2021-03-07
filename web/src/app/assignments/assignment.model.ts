@@ -1,11 +1,10 @@
 export class Assignment {
   _id?: string;
-  id: number;
-  nom: string;
+  name: string;
   dateDeRendu: Date;
   rendu: boolean;
-  eleve: string;
-  matiere: string;
-  note: string;
+  idSubject: string;
+  idStudent: string;
+  note: number;
   remarque: string;
 }
