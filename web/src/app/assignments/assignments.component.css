@@ -43,7 +43,7 @@ mat-card-content{
 .assignment_flex{
   flex:auto;
   margin: 15px;
-  height: 600px;
+  height:calc(85vh - 20px);
 }
 
 .list_nonrendu{

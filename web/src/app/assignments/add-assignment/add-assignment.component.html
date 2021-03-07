@@ -59,11 +59,11 @@
     <form>
       <ng-template matStepLabel>Nom de l'élève et du devoir</ng-template>
 
-      <mat-form-field>
+      <mat-form-field style="margin: 0 10px">
         <input matInput placeholder="Nom du devoir" [(ngModel)]="nomAssignment" name="nom">
       </mat-form-field>
 
-      <mat-form-field>
+      <mat-form-field style="margin: 0 10px">
         <mat-label>Eleve</mat-label>
         <mat-select [(ngModel)]="eleveAssignment" name="auteur">
           <mat-option *ngFor="let student of assignmentService.students" value="{{student._id}}"><img style="margin-right: 10px;" src='{{subjectsService.uriImg}}?id={{student._id}}' height="20px" width="20px" />{{student.name}}</mat-option>
@@ -79,14 +79,14 @@
     <form>
       <ng-template matStepLabel>Matière et date de rendu</ng-template>
 
-      <mat-form-field>
+      <mat-form-field style="margin: 0 10px">
         <mat-label>Matière</mat-label>
         <mat-select [(ngModel)]="matiereAssignment" name="matiere">
           <mat-option *ngFor="let subject of subjectsService.subjects" value="{{subject._id}}"><img style="margin-right: 10px;" src='{{subjectsService.uriImg}}?id={{subject._id}}' height="20px" width="20px" />{{subject.name}}</mat-option>
         </mat-select>
       </mat-form-field>
 
-      <mat-form-field>
+      <mat-form-field style="margin: 0 10px">
         <input matInput [matDatepicker]="picker" placeholder="Date de rendu" [(ngModel)]="dateRendu" name="date">
         <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
         <mat-datepicker #picker></mat-datepicker>
@@ -102,11 +102,11 @@
     <form>
       <ng-template matStepLabel>Rendu du devoir</ng-template>
 
-      <mat-form-field>
+      <mat-form-field style="margin: 0 10px">
         <input matInput placeholder="Note sur 20" [(ngModel)]="noteAssignment" (change)="checkRendu()" name="note">
       </mat-form-field>
 
-      <mat-form-field>
+      <mat-form-field style="margin: 0 10px">
         <input matInput placeholder="Remarque" [(ngModel)]="remarqueAssignment" (change)="checkRendu()" name="remarque">
       </mat-form-field>
 

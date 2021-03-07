@@ -13,7 +13,7 @@
               <div mat-line id="teacher">Par : {{subject.teacher.name}}</div>
             </div>
           </a>
-          <img src='{{subjectsService.uriImg}}?id={{subject._id}}' style="float: right;" height="80px" width="80px" />
+          <img src='{{subjectsService.uriImg}}?id={{subject._id}}' onerror="this.src='../assets/img/defautSubject.png'" style="float: right;" height="80px" width="80px" />
         </div>
         <br>
 

@@ -42,6 +42,7 @@ import { EditSubjectComponent } from './subjects/edit-subject/edit-subject.compo
 import { DetailSubjectComponent } from './subjects/detail-subject/detail-subject.component';
 import { NoteAssignmentDialog } from './assignments/assignments.component';
 import { TeachersComponent } from './teachers/teachers.component';
+import { RemarquePipe } from './shared/remarque.pipe';
 
 
 const routes: Routes = [
@@ -57,7 +58,8 @@ const routes: Routes = [
   {path: 'subjects', component: SubjectsComponent},
   {path: 'subjects/add', component: AddSubjectComponent},
   {path: 'subject/:id', component: DetailSubjectComponent},
-  {path: 'subject/:id/edit', component: EditSubjectComponent}
+  {path: 'subject/:id/edit', component: EditSubjectComponent,
+  canActivate: [AuthGuard]}
 ];
 
 @NgModule({
@@ -74,7 +76,8 @@ const routes: Routes = [
     EditSubjectComponent,
     DetailSubjectComponent,
     NoteAssignmentDialog,
-    TeachersComponent
+    TeachersComponent,
+    RemarquePipe
   ],
   imports: [
     ScrollingModule,

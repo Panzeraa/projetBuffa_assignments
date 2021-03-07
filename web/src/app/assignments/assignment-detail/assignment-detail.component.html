@@ -1,21 +1,22 @@
 <div class="container">
   <mat-card *ngIf="assignmentTransmis">
-    <mat-card-title class="title_assignment"><span>Devoir : {{assignmentTransmis.name}}</span> <span *ngIf="assignmentTransmis.rendu; else elseBlockNote">Note : {{assignmentTransmis.note}}/20</span></mat-card-title>
+    <mat-card-title class="title_assignment"><span>Devoir : {{assignmentTransmis.name}}</span> <span
+        *ngIf="assignmentTransmis.rendu; else elseBlockNote">Note : {{assignmentTransmis.note}}/20</span>
+    </mat-card-title>
     <ng-template #elseBlockNote><span>Aucune note</span></ng-template>
     <mat-card-subtitle>{{assignmentTransmis.dateDeRendu | date}}</mat-card-subtitle>
 
     <mat-card-content>
       <h3>Matière</h3>
       <div>
-        <img
-              style="margin-right: 10px;" src='{{assignmentService.uri}}image?id={{assignmentTransmis.subject._id}}' height="40px"
-              width="40px" />{{assignmentTransmis.subject.name}}
+        <img style="margin-right: 10px;" src='{{assignmentService.uri}}image?id={{assignmentTransmis.subject._id}}'
+          height="40px" width="40px" />{{assignmentTransmis.subject.name}}
       </div>
       <h3>Professeur</h3>
       <div>
-        <img
-              style="margin-right: 10px;" src='{{assignmentService.uri}}image?id={{assignmentTransmis.subject.teacher._id}}' height="40px"
-              width="40px" /> {{assignmentTransmis.subject.teacher.name}}
+        <img style="margin-right: 10px;"
+          src='{{assignmentService.uri}}image?id={{assignmentTransmis.subject.teacher._id}}' onerror="this.src='../assets/img/defautProf.png'" height="40px"
+          width="40px" /> {{assignmentTransmis.subject.teacher.name}}
       </div>
       <h3>Etudiant</h3>
       <div>
@@ -26,22 +27,17 @@
       </div>
       <h3>Remarque</h3>
       <div>
-        {{assignmentTransmis.remarque}}
+        {{assignmentTransmis.remarque | remarque}}
       </div>
     </mat-card-content>
     <div id="bottom">
-      <button mat-flat-button
-          color="primary"
-          [disabled]="assignmentTransmis.rendu" (click)="onAssignmentRendu()">
-            Rendre le devoir
-          </button>
-          <button mat-flat-button
-          color="primary"
-          [disabled]="!isAdmin()"
-          (click)="onClickEdit()">
-            EDIT
-          </button>
-      <button mat-flat-button color="warn" (click)="onDelete()">
+      <button mat-flat-button style="margin:0 10px" color="primary" [disabled]="assignmentTransmis.rendu" (click)="onAssignmentRendu()">
+        Rendre le devoir
+      </button>
+      <button mat-flat-button style="margin:0 10px" color="primary" [disabled]="!isAdmin()" (click)="onClickEdit()">
+        EDIT
+      </button>
+      <button mat-flat-button style="margin:0 10px" color="warn" (click)="onDelete()">
         DELETE
       </button>
     </div>
