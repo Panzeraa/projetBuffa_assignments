@@ -7,7 +7,7 @@
   <div class="assignment_container" cdkDropListGroup>
     <mat-card class="assignment_flex">
       <mat-card-header>
-        <mat-card-title>Non rendu</mat-card-title>
+        <mat-card-title>Tous les devoirs non rendus</mat-card-title>
       </mat-card-header>
       <mat-card-content>
         <cdk-virtual-scroll-viewport #scrollerNonRendu itemSize="96" id="infinite-scroll2" class="infinite_scroll">
@@ -32,7 +32,7 @@
     </mat-card>
     <mat-card class="assignment_flex">
       <mat-card-header>
-        <mat-card-title>Rendu</mat-card-title>
+        <mat-card-title>Tous les devoirs rendus</mat-card-title>
       </mat-card-header>
       <mat-card-content>
         <cdk-virtual-scroll-viewport #scroller itemSize="10" class="viewport" id="infinite-scroll"
@@ -53,18 +53,18 @@
       </mat-card-content>
     </mat-card>
   </div>
-  <!-- 
-  <mat-tab-group mat-align-tabs="start">
-    <mat-tab label="Rendu">
-      
-    </mat-tab>
 
-    <mat-tab label="Non-rendu">
-  
-    </mat-tab>
-
-
-  </mat-tab-group> -->
-
-
+  <mat-card class="search_card">
+    <mat-card-header>
+      <mat-card-title>Faire une recherche sur les devoirs</mat-card-title>
+    </mat-card-header>
+    <img mat-card-image src="https://material.angular.io/assets/img/examples/shiba2.jpg" alt="Photo of a Shiba Inu">
+    <mat-card-content>
+      <p>
+        The Shiba Inu is the smallest of the six original and distinct spitz breeds of dog from Japan.
+        A small, agile dog that copes very well with mountainous terrain, the Shiba Inu was originally
+        bred for hunting.
+      </p>
+    </mat-card-content>
+  </mat-card>
 </main>

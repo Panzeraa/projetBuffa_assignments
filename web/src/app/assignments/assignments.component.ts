@@ -7,6 +7,8 @@ import { map, pairwise, filter, throttleTime } from 'rxjs/operators';
 import { CdkDragDrop, moveItemInArray, transferArrayItem } from '@angular/cdk/drag-drop';
 import { MatDialog, MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { SubjectsService } from '../shared/subjects.service';
+import { AuthService } from '../shared/auth.service';
+import { MatSnackBar } from '@angular/material/snack-bar';
 
 export interface DialogData {
   _id: string;
@@ -33,7 +35,15 @@ export class AssignmentsComponent implements OnInit, AfterViewInit {
   nextPageNonRendu: Number = 1;
   limitNonRendu: Number = 20;
   countAssignmentsNonRendu: Number;
-  constructor(private assignmentService: AssignmentsService, private ngZone: NgZone, private ngZoneNonRendu: NgZone, public dialog: MatDialog, public subjectsService: SubjectsService) { }
+
+
+  constructor(private _snackBar: MatSnackBar,
+     private authService: AuthService, 
+     private assignmentService: AssignmentsService, 
+     private ngZone: NgZone, 
+     private ngZoneNonRendu: NgZone, 
+     public dialog: MatDialog, 
+     public subjectsService: SubjectsService) { }
 
   @ViewChild('scroller') scroller: CdkVirtualScrollViewport;
   @ViewChild('scrollerNonRendu') scrollerNonRendu: CdkVirtualScrollViewport;
@@ -95,20 +105,12 @@ export class AssignmentsComponent implements OnInit, AfterViewInit {
       data: { name: event.previousContainer.data[event.previousIndex]['name'], _id: event.previousContainer.data[event.previousIndex]['_id'] }
     });
 
-    // if(!isNaN(note)) {
-    //   console.log("transfer");
-    //   transferArrayItem(event.previousContainer.data,
-    //     event.container.data,
-    //     event.previousIndex,
-    //     event.currentIndex);
-    // }
-
     dialogRef.afterClosed().subscribe(result => {
       console.log('The dialog was closed');
       console.log(result);
 
       if (result.hasOwnProperty('note') && result.hasOwnProperty('remarque')) {
-        if (result.note >= 0 && result.note <= 20) {
+        if (result.note >= 0 && result.note <= 20 && !isNaN(result.note) && result.note != null) {
           result.rendu = true;
           this.assignmentService.updateAssignment(result)
             .subscribe((message) => {
@@ -124,7 +126,21 @@ export class AssignmentsComponent implements OnInit, AfterViewInit {
               // this.getAssignmentsNonRendu();
             });
         }
+        else {
+          this.openSnackBar("Les valeurs sont invalides.")
+        }
       }
+      else {
+        this.openSnackBar("Les valeurs sont invalides.")
+      }
+    });
+  }
+
+  openSnackBar(message: string) {
+    this._snackBar.open(message, null, {
+      duration: 5000,
+      horizontalPosition: "center",
+      verticalPosition: "bottom",
     });
   }
 
@@ -133,20 +149,14 @@ export class AssignmentsComponent implements OnInit, AfterViewInit {
     if (event.previousContainer === event.container) {
       // moveItemInArray(event.container.data, event.previousIndex, event.currentIndex);
     } else {
-      // var note = parseFloat(prompt("Entrez la note : "));
-      // var note = 5;
-      // console.log(event)
-      // console.log(event.previousContainer.data[event.previousIndex])
-      this.openDialog(event);
-      // console.log(note);
-      // console.log(isNaN(note));
-      // if(!isNaN(note)) {
-      //   console.log("transfer");
-      //   transferArrayItem(event.previousContainer.data,
-      //     event.container.data,
-      //     event.previousIndex,
-      //     event.currentIndex);
-      // }
+      this.authService.isAdmin()
+        .then((authentifie: Boolean) => {
+          if (authentifie) {
+            this.openDialog(event);
+          } else {
+            alert("Vous ne disposez pas de toutes les permissions pour effectuer cette action.\nVeuillez vous connecter.")
+          }
+        });
     }
   }
 }

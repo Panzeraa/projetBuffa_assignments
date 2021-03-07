@@ -74,7 +74,7 @@ function getAssignments(req, res) {
       subject: { $first: "$subject" },
     }
   },
-  { $sort: { "dateDeRendu": 1} },
+  { $sort: { "_id": -1} },
   ]);
   Assignment.aggregatePaginate(
     aggregateQuery,

@@ -24,6 +24,7 @@ import {MatStepperModule} from '@angular/material/stepper';
 import {MatGridListModule} from '@angular/material/grid-list';
 import {DragDropModule} from '@angular/cdk/drag-drop';
 import {MatDialogModule} from '@angular/material/dialog';
+import {MatSnackBarModule} from '@angular/material/snack-bar';
 import { AssignmentsComponent } from './assignments/assignments.component';
 import { RenduDirective } from './shared/rendu.directive';
 import { FormsModule } from '@angular/forms';
@@ -41,6 +42,7 @@ import { EditSubjectComponent } from './subjects/edit-subject/edit-subject.compo
 import { DetailSubjectComponent } from './subjects/detail-subject/detail-subject.component';
 import { NoteAssignmentDialog } from './assignments/assignments.component';
 import { TeachersComponent } from './teachers/teachers.component';
+
 
 const routes: Routes = [
   {path: '', component: AssignmentsComponent},
@@ -90,7 +92,7 @@ const routes: Routes = [
     MatListModule, MatCardModule, MatSelectModule,
     MatCheckboxModule, MatSlideToggleModule,
     MatToolbarModule,MatMenuModule,MatTabsModule,MatStepperModule,
-    MatGridListModule,DragDropModule,MatDialogModule,
+    MatGridListModule,DragDropModule,MatDialogModule,MatSnackBarModule,
     FormsModule, HttpClientModule,
     ReactiveFormsModule,
     RouterModule.forRoot(routes)

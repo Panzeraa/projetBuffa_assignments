@@ -1,3 +1,8 @@
+.search_card{
+  margin: 15px;
+}
+
+
 .rendu {
   color:green;
   border: 1px solid green;
@@ -25,7 +30,7 @@
 } */
 
 .infinite_scroll{
-  height: 95%;
+  height: 93%;
   /* height:calc(100vh - 65px); */
 }
 mat-card-content{
