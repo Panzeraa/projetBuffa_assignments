@@ -57,7 +57,7 @@
 <mat-horizontal-stepper #stepper>
   <mat-step [stepControl]="firstFormGroup" errorMessage="Tous les champs sont requis.">
     <form>
-      <ng-template matStepLabel>Fill out your name</ng-template>
+      <ng-template matStepLabel>Nom de l'élève et du devoir</ng-template>
 
       <mat-form-field>
         <input matInput placeholder="Nom de l'élève" [(ngModel)]="eleveAssignment" name="auteur">
@@ -67,24 +67,24 @@
         <input matInput placeholder="Nom du devoir" [(ngModel)]="nomAssignment" name="nom">
       </mat-form-field>
       <div>
-        <button mat-button matStepperNext>Next</button>
+        <button mat-button matStepperNext>Suivant</button>
       </div>
     </form>
   </mat-step>
-  <mat-step [stepControl]="secondFormGroup" errorMessage="Address is required.">
+  <mat-step [stepControl]="secondFormGroup" errorMessage="Tous les champs sont requis.">
     <form>
-      <ng-template matStepLabel>Fill out your address</ng-template>
+      <ng-template matStepLabel>Matière et date de rendu</ng-template>
 
       <mat-form-field>
         <mat-label>Matière</mat-label>
         <mat-select [(ngModel)]="matiereAssignment" name="matiere">
-          <mat-option value="bd">Base de données</mat-option>
-          <mat-option value="technoWeb">Technologies Web</mat-option>
+          <mat-option *ngFor="let subject of subjectsService.subjects" value="{{subject._id}}">{{subject.name}}</mat-option>
+          <!-- <mat-option value="technoWeb">Technologies Web</mat-option>
           <mat-option value="grails">Grails</mat-option>
           <mat-option value="angular">Angular</mat-option>
           <mat-option value="ios">iOS</mat-option>
           <mat-option value="comm">Communication</mat-option>
-          <mat-option value="spring">Spring</mat-option>
+          <mat-option value="spring">Spring</mat-option> -->
         </mat-select>
       </mat-form-field>
 
@@ -95,14 +95,14 @@
       </mat-form-field>
 
       <div>
-        <button mat-button matStepperPrevious>Back</button>
-        <button mat-button matStepperNext>Next</button>
+        <button mat-button matStepperPrevious>Précédent</button>
+        <button mat-button matStepperNext>Suivant</button>
       </div>
     </form>
   </mat-step>
   <mat-step [stepControl]="thirdFormGroup" errorMessage="Tous les champs sont requis.">
     <form>
-      <ng-template matStepLabel>Fill out your name</ng-template>
+      <ng-template matStepLabel>Rendu du devoir</ng-template>
 
       <mat-form-field>
         <input matInput placeholder="Note sur 20" [(ngModel)]="noteAssignment" name="note">
@@ -120,17 +120,17 @@
         </mat-radio-group>
       </div>
       <div>
-        <button mat-button matStepperPrevious>Back</button>
-        <button mat-button matStepperNext>Next</button>
+        <button mat-button matStepperPrevious>Précédent</button>
+        <button mat-button matStepperNext>Suivant</button>
       </div>
     </form>
   </mat-step>
   <mat-step>
-    <ng-template matStepLabel>Done</ng-template>
+    <ng-template matStepLabel>Enregistrer</ng-template>
     <p>You are now done.</p>
     <div>
       <button mat-button matStepperPrevious>Back</button>
-      <button mat-button (click)="stepper.reset()">Reset</button>
+      <button mat-button>Envoyer</button>
     </div>
   </mat-step>
 </mat-horizontal-stepper>

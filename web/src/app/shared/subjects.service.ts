@@ -14,6 +14,7 @@ export class SubjectsService {
 
   public subjects: Subject;
 
+  uriImg = 'http://localhost:8010/api/image';
   uri = 'http://localhost:8010/api/subjects';
 
   public getSubjects() {

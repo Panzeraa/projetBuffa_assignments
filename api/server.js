@@ -2,6 +2,7 @@
 //https://levelup.gitconnected.com/handling-errors-in-mongoose-express-for-display-in-react-d966287f573b
 
 let express = require("express");
+let path = require('path'); 
 let app = express();
 let bodyParser = require("body-parser");
 let assignment = require("./routes/assignments");
@@ -58,6 +59,8 @@ const prefix = "/api";
 app.route(prefix + "/utilisateurs").post(utilisateur.login);
 
 app.route(prefix + "/assignments").get(assignment.getAssignments);
+
+app.route(prefix + "/image").get(assignment.getImage);
 
 app.route(prefix + "/subjects").get(subject.getSubjects);
 

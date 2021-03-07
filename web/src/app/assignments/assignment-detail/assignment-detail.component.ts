@@ -22,8 +22,9 @@ export class AssignmentDetailComponent implements OnInit {
     // on récupère l'id passé dans l'URL via l'objet snapshot
     // attention l'url étant composé de strings on utilisera
     // "+" pour forcer la conversion en number
-    const id = +this.route.snapshot.params.id;
+    const id = this.route.snapshot.params.id;
 
+    console.log(id);
     this.assignmentService.getAssignment(id)
       .subscribe(a => this.assignmentTransmis = a);
   }

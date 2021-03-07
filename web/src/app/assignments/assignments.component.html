@@ -7,13 +7,17 @@
   <div class="assignment_container" cdkDropListGroup>
     <div class="assignment_flex">
       <cdk-virtual-scroll-viewport #scrollerNonRendu itemSize="96" id="infinite-scroll2" class="infinite_scroll">
-        <mat-list cdkDropList [cdkDropListData]="assignmentsNonRendu" (cdkDropListDropped)="drop($event)">
-          <a class="list_nonrendu" *ngFor="let assignment of assignmentsNonRendu" cdkDrag routerLink="/assignment/{{assignment.id}}">
-            
+        <mat-list cdkDropList [cdkDropListData]="assignmentsNonRendu">
+          <a class="list_nonrendu" *ngFor="let assignment of assignmentsNonRendu" cdkDrag routerLink="/assignment/{{assignment._id}}">
+            <!-- <div *cdkDragPreview>
+              <h2>{{assignment.name}}</h2>
+              <h4>{{assignment.name}}</h4>
+            </div> -->
             <mat-list-item>
               <mat-icon mat-list-icon color="error">error</mat-icon>
               <div mat-line>{{assignment.name}}</div>
-              <div mat-line> {{assignment.dateDeRendu | date}} </div>
+              <div mat-line>Date de rendu : {{assignment.dateDeRendu | date}} </div>
+              <img src='{{subjectsService.uriImg}}?id={{assignment.subject._id}}' height="40px" width="40px" />
               <mat-divider></mat-divider>
             </mat-list-item>
           </a>
@@ -24,11 +28,12 @@
       <cdk-virtual-scroll-viewport #scroller itemSize="96" class="viewport" id="infinite-scroll"
         class="infinite_scroll">
         <mat-list cdkDropList [cdkDropListData]="assignmentsRendu" (cdkDropListDropped)="drop($event)">
-          <a class="list_nonrendu" *ngFor="let assignment of assignmentsRendu" cdkDrag routerLink="/assignment/{{assignment.id}}">
+          <a class="list_nonrendu" *ngFor="let assignment of assignmentsRendu" cdkDrag routerLink="/assignment/{{assignment._id}}">
             <mat-list-item>
               <mat-icon mat-list-icon style="color: lightgreen;">check_circle</mat-icon>
               <div mat-line>{{assignment.name}} - note : {{assignment.note}}/20</div>
-              <div mat-line> {{assignment.dateDeRendu | date}} </div>
+              <div mat-line> Date de rendu : {{assignment.dateDeRendu | date}} </div>
+              <img src='{{subjectsService.uriImg}}?id={{assignment.subject._id}}' height="40px" width="40px" />
               <mat-divider></mat-divider>
             </mat-list-item>
           </a>

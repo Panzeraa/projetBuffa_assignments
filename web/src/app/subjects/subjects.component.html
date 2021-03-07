@@ -12,7 +12,7 @@
               <p id="teacher">{{subject.idTeacher}}</p>
             </div>
     
-            <img src='../assets/img/{{subject.name}}.png' height="80px" width="80px" />
+            <img src='{{subjectsService.uriImg}}?id={{subject._id}}' height="80px" width="80px" />
 
           </mat-list-item>
        </mat-list> 

@@ -7,6 +7,7 @@ import {FormBuilder, FormGroup, Validators} from '@angular/forms';
 
 
 import {STEPPER_GLOBAL_OPTIONS} from '@angular/cdk/stepper';
+import { SubjectsService } from 'src/app/shared/subjects.service';
 
 @Component({
   selector: 'app-add-assignment',
@@ -31,9 +32,10 @@ export class AddAssignmentComponent implements OnInit {
   secondFormGroup: FormGroup;
   thirdFormGroup: FormGroup;
 
-  constructor(private assignmentService: AssignmentsService, private router: Router, private _formBuilder: FormBuilder) { }
+  constructor(private assignmentService: AssignmentsService, private router: Router, private _formBuilder: FormBuilder, public subjectsService: SubjectsService) { }
 
   ngOnInit(): void {
+    this.subjectsService.getSubjects();
     this.firstFormGroup = this._formBuilder.group({
       firstCtrl: ['', Validators.required]
     });
