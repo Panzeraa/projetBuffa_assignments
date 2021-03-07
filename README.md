@@ -31,11 +31,11 @@ Dans deux terminaux différents :
 
 ### Collection créées
 
-* assignements : Un dévoir à plusieurs propriétés : un nom, un auteur (l'élève), un sujet, une note sur 20, une remarque, une image liée au sujet du devoir et une image liée à l'enseignant du sujet.
-* subjects : Les sujets qui possèdent un nom et qui sont rattachés à un enseignant. L'image d'un sujet et importé lors de sa création, portant comme nom l'id du sujet.
-* teachers : Les enseignants possèdent un nom et une image fixe.
-* students : Les étudiants ont un nom et une adresse mail. Ils sont rattachés à un assignment.
-* utilisateurs : Les utilisateurs pouvant se connecter afin d'éditer les collections assignments et subjects.
+* **assignements** : Un dévoir à plusieurs propriétés : un nom, un auteur (l'élève), un sujet, une note sur 20, une remarque, une image liée au sujet du devoir et une image liée à l'enseignant du sujet.
+* **subjects** : Les sujets qui possèdent un nom et qui sont rattachés à un enseignant. L'image d'un sujet et importé lors de sa création, portant comme nom l'id du sujet.
+* **teachers** : Les enseignants possèdent un nom et une image fixe.
+* **students** : Les étudiants ont un nom et une adresse mail. Ils sont rattachés à un assignment.
+* **utilisateurs** : Les utilisateurs pouvant se connecter afin d'éditer les collections assignments et subjects.
 
 ### Gestion de login/password
 
@@ -47,6 +47,10 @@ Les assignments sont divisés en deux catégories : les non-rendus et les rendus
 Les assigments non-rendus ne possédant pas de note se trouve à gauche de l'écran et à droite se trouvent les rendus.
 Afin de passer un assignment non-rendu à l'état de rendu, on **drag and drop** l'assignment voulu puis on complète ses propriétés, à savoir sa note et sa remarque sur la boîte de dialogue qui apparait. L'assignment devient rendu et apparaitra dans l'onglet "Rendu" de droite.
 
-### Création d'un Assignments 
+### Création d'un Assignment
 
 Un **formulaire de type Stepper** (formulaire en plusieurs étapes) permet l'ajout d'Assignments.
+
+### Création d'un Subject 
+
+Les sujets peuvent être crées. On leurs attribut un nom, un enseignant (présent en base) et une image.
