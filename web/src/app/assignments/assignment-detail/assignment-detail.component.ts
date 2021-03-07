@@ -116,17 +116,3 @@ export class AssignmentDetailComponent implements OnInit {
     return this.authService.loggedIn;
   }
 }
-
-@Component({
-  selector: 'note-detail-assignment-dialog',
-  templateUrl: 'note-detail-assignment-dialog.html',
-})
-export class NoteDetailAssignmentDialog {
-  constructor(
-    public dialogRef: MatDialogRef<NoteDetailAssignmentDialog>,
-    @Inject(MAT_DIALOG_DATA) public data: DialogData) { }
-
-  onNoClick(): void {
-    this.dialogRef.close();
-  }
-}
