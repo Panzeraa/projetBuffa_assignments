@@ -1,0 +1,16 @@
+<h1 mat-dialog-title>Devoirs {{data.name}}</h1>
+<div mat-dialog-content>
+  <p>Rentrez les informations à propos du devoir</p>
+  <mat-form-field style="width: 100%">
+    <mat-label>Note (/20)</mat-label>
+    <input type="number" matInput [(ngModel)]="data.note">
+  </mat-form-field>
+  <mat-form-field style="width: 100%">
+    <mat-label>Remarques</mat-label>
+    <textarea matInput rows="3" [(ngModel)]="data.remarque" placeholder="Ex. Bon devoir"></textarea>
+  </mat-form-field>
+</div>
+<div mat-dialog-actions>
+  <button mat-raised-button color="warn" (click)="onNoClick()">Annuler</button>
+  <button mat-button [mat-dialog-close]="data" cdkFocusInitial>Enregistrer</button>
+</div>

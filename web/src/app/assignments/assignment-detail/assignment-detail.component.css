@@ -3,3 +3,12 @@
   justify-content: space-between;
   align-items: flex-end;
 }
+
+.container{
+  margin: 15px;
+}
+
+.title_assignment{
+  display: flex;
+    justify-content: space-between;
+}

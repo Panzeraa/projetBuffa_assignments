@@ -74,6 +74,7 @@ function getAssignments(req, res) {
       subject: { $first: "$subject" },
     }
   },
+  { $sort: { "_id": -1} },
   ]);
   Assignment.aggregatePaginate(
     aggregateQuery,
@@ -166,9 +167,14 @@ function getAssignment(req, res) {
 function postAssignment(req, res) {
   let assignment = new Assignment();
   assignment.id = req.body.id;
-  assignment.nom = req.body.nom;
+  assignment.name = req.body.name;
+  assignment.remarque = req.body.remarque;
   assignment.dateDeRendu = req.body.dateDeRendu;
   assignment.rendu = req.body.rendu;
+  assignment.note = +req.body.note;
+  assignment.idStudent = ObjectID(req.body.idStudent);
+  assignment.idSubject = ObjectID(req.body.idSubject);
+
 
   console.log("POST assignment reçu :");
   console.log(assignment);
@@ -177,7 +183,7 @@ function postAssignment(req, res) {
     if (err) {
       res.send("cant post assignment ", err);
     }
-    res.json({ message: `${assignment.nom} saved!` });
+    res.json({ message: `${assignment.name} saved!` });
   });
 }
 

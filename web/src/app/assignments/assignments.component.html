@@ -5,54 +5,66 @@
       </button>
     </a></nav> -->
   <div class="assignment_container" cdkDropListGroup>
-    <div class="assignment_flex">
-      <cdk-virtual-scroll-viewport #scrollerNonRendu itemSize="96" id="infinite-scroll2" class="infinite_scroll">
-        <mat-list cdkDropList [cdkDropListData]="assignmentsNonRendu">
-          <a class="list_nonrendu" *ngFor="let assignment of assignmentsNonRendu" cdkDrag routerLink="/assignment/{{assignment._id}}">
-            <!-- <div *cdkDragPreview>
+    <mat-card class="assignment_flex">
+      <mat-card-header>
+        <mat-card-title>Tous les devoirs non rendus</mat-card-title>
+      </mat-card-header>
+      <mat-card-content>
+        <cdk-virtual-scroll-viewport #scrollerNonRendu itemSize="96" id="infinite-scroll2" class="infinite_scroll">
+          <mat-list cdkDropList [cdkDropListData]="assignmentsNonRendu">
+            <a class="list_nonrendu" *ngFor="let assignment of assignmentsNonRendu" cdkDrag
+              routerLink="/assignment/{{assignment._id}}">
+              <!-- <div *cdkDragPreview>
               <h2>{{assignment.name}}</h2>
               <h4>{{assignment.name}}</h4>
             </div> -->
-            <mat-list-item>
-              <mat-icon mat-list-icon color="error">error</mat-icon>
-              <div mat-line>{{assignment.name}}</div>
-              <div mat-line>Date de rendu : {{assignment.dateDeRendu | date}} </div>
-              <img src='{{subjectsService.uriImg}}?id={{assignment.subject._id}}' height="40px" width="40px" />
-              <mat-divider></mat-divider>
-            </mat-list-item>
-          </a>
-        </mat-list>
-      </cdk-virtual-scroll-viewport>
-    </div>
-    <div class="assignment_flex">
-      <cdk-virtual-scroll-viewport #scroller itemSize="96" class="viewport" id="infinite-scroll"
-        class="infinite_scroll">
-        <mat-list cdkDropList [cdkDropListData]="assignmentsRendu" (cdkDropListDropped)="drop($event)">
-          <a class="list_nonrendu" *ngFor="let assignment of assignmentsRendu" cdkDrag routerLink="/assignment/{{assignment._id}}">
-            <mat-list-item>
-              <mat-icon mat-list-icon style="color: lightgreen;">check_circle</mat-icon>
-              <div mat-line>{{assignment.name}} - note : {{assignment.note}}/20</div>
-              <div mat-line> Date de rendu : {{assignment.dateDeRendu | date}} </div>
-              <img src='{{subjectsService.uriImg}}?id={{assignment.subject._id}}' height="40px" width="40px" />
-              <mat-divider></mat-divider>
-            </mat-list-item>
-          </a>
-        </mat-list>
-      </cdk-virtual-scroll-viewport>
-    </div>
+              <mat-list-item>
+                <mat-icon mat-list-icon color="error">error</mat-icon>
+                <div mat-line>{{assignment.name}}</div>
+                <div mat-line>Date de rendu : {{assignment.dateDeRendu | date}} </div>
+                <img src='{{subjectsService.uriImg}}?id={{assignment.subject._id}}' height="40px" width="40px" />
+                <mat-divider></mat-divider>
+              </mat-list-item>
+            </a>
+          </mat-list>
+        </cdk-virtual-scroll-viewport>
+      </mat-card-content>
+    </mat-card>
+    <mat-card class="assignment_flex">
+      <mat-card-header>
+        <mat-card-title>Tous les devoirs rendus</mat-card-title>
+      </mat-card-header>
+      <mat-card-content>
+        <cdk-virtual-scroll-viewport #scroller itemSize="10" class="viewport" id="infinite-scroll"
+          class="infinite_scroll">
+          <mat-list cdkDropList [cdkDropListData]="assignmentsRendu" (cdkDropListDropped)="drop($event)">
+            <a class="list_nonrendu" *ngFor="let assignment of assignmentsRendu" cdkDrag
+              routerLink="/assignment/{{assignment._id}}">
+              <mat-list-item>
+                <mat-icon mat-list-icon style="color: lightgreen;">check_circle</mat-icon>
+                <div mat-line>{{assignment.name}} - note : {{assignment.note}}/20</div>
+                <div mat-line> Date de rendu : {{assignment.dateDeRendu | date}} </div>
+                <img src='{{subjectsService.uriImg}}?id={{assignment.subject._id}}' height="40px" width="40px" />
+                <mat-divider></mat-divider>
+              </mat-list-item>
+            </a>
+          </mat-list>
+        </cdk-virtual-scroll-viewport>
+      </mat-card-content>
+    </mat-card>
   </div>
-  <!-- 
-  <mat-tab-group mat-align-tabs="start">
-    <mat-tab label="Rendu">
-      
-    </mat-tab>
 
-    <mat-tab label="Non-rendu">
-  
-    </mat-tab>
-
-
-  </mat-tab-group> -->
-
-
+  <mat-card class="search_card">
+    <mat-card-header>
+      <mat-card-title>Faire une recherche sur les devoirs</mat-card-title>
+    </mat-card-header>
+    <img mat-card-image src="https://material.angular.io/assets/img/examples/shiba2.jpg" alt="Photo of a Shiba Inu">
+    <mat-card-content>
+      <p>
+        The Shiba Inu is the smallest of the six original and distinct spitz breeds of dog from Japan.
+        A small, agile dog that copes very well with mountainous terrain, the Shiba Inu was originally
+        bred for hunting.
+      </p>
+    </mat-card-content>
+  </mat-card>
 </main>

@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Assignment } from '../assignment.model';
 import { AssignmentsService } from '../../shared/assignments.service';
 import { ActivatedRoute, Router } from '@angular/router';
+import { SubjectsService } from 'src/app/shared/subjects.service';
 @Component({
   selector: 'app-edit-assignment',
   templateUrl: './edit-assignment.component.html',
@@ -11,17 +12,29 @@ export class EditAssignmentComponent implements OnInit {
   assignment: Assignment;
 
   constructor(
-    private assignmentService: AssignmentsService,
+    public assignmentService: AssignmentsService,
+    public subjectsService: SubjectsService,
     private route: ActivatedRoute,
     private router: Router
-  ) {}
+  ) { }
 
   ngOnInit(): void {
-    const id = +this.route.snapshot.params.id;
+    const id = this.route.snapshot.params.id;
 
     this.assignmentService
       .getAssignment(id)
-      .subscribe((ass) => (this.assignment = ass));
+      .subscribe((ass) => {
+        this.assignment = ass
+        this.assignment.idStudent = this.assignment['student']['_id']
+        this.assignment.idSubject = this.assignment['subject']['_id']
+        this.assignment.note = this.assignment.note == -1?null:this.assignment.note;
+
+        delete this.assignment['student']
+        delete this.assignment['subject']
+        console.log(this.assignment)
+      });
+
+
 
     const paramsHTTP = this.route.snapshot.queryParams;
     const fragment = this.route.snapshot.fragment;
@@ -29,6 +42,9 @@ export class EditAssignmentComponent implements OnInit {
     console.log(paramsHTTP);
     console.log('Fragment :');
     console.log(fragment);
+
+    this.subjectsService.getSubjects();
+    this.assignmentService.getStudents();
   }
 
   onSaveAssignment(event) {

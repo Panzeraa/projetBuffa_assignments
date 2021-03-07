@@ -1,3 +1,8 @@
+.search_card{
+  margin: 15px;
+}
+
+
 .rendu {
   color:green;
   border: 1px solid green;
@@ -25,15 +30,20 @@
 } */
 
 .infinite_scroll{
-  height:calc(100vh - 65px);
+  height: 93%;
+  /* height:calc(100vh - 65px); */
 }
-
+mat-card-content{
+  height: 100%;
+}
 .assignment_container{
   display: flex;
 }
 
 .assignment_flex{
   flex:auto;
+  margin: 15px;
+  height: 600px;
 }
 
 .list_nonrendu{

@@ -8,6 +8,7 @@ let bodyParser = require("body-parser");
 let assignment = require("./routes/assignments");
 let utilisateur = require("./routes/utilisateurs");
 let subject = require("./routes/subjects");
+let student = require("./routes/students");
 let teacher = require("./routes/teachers");
 
 
@@ -65,6 +66,8 @@ app.route(prefix + "/assignments").get(assignment.getAssignments);
 app.route(prefix + "/image").get(assignment.getImage);
 
 app.route(prefix + "/subjects").get(subject.getSubjects);
+
+app.route(prefix + "/students").get(student.getStudents);
 
 app.route(prefix + "/subjects").post(subject.postSubject);
 app.route(prefix + "/subject/:id").get(subject.getSubject);

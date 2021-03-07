@@ -8,7 +8,7 @@ import { AuthService } from '../shared/auth.service';
 })
 export class LoginComponent implements OnInit {
 
-  constructor(private authService: AuthService) { }
+  constructor(public authService: AuthService) { }
 
   public user = {
     username : "",
@@ -18,10 +18,16 @@ export class LoginComponent implements OnInit {
   ngOnInit(): void {
   }
 
+  logout(){
+    this.authService.logOut();
+    console.log(this.authService.isAdmin())
+  }
+
   login(){
     console.log(this.user.username + this.user.password)
     this.authService.logIn(this.user)
     .subscribe(message => {
+      console.log(this.authService.loggedIn);
       console.log(message);
       // on navigue vers la page d'accueil, en mettant cette ligne ici on est sur
       // d'afficher le nouvel élément inséré...
