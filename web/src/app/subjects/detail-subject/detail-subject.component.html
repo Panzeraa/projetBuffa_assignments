@@ -1,1 +1,18 @@
-<p>test-subject works!</p>
+<div class="container">
+    <mat-card *ngIf="subjectTransmis">
+      <mat-card-title>{{subjectTransmis.name}}</mat-card-title>
+      <mat-card-subtitle>{{subjectTransmis.idTeacher}}</mat-card-subtitle>
+      <div id="bottom">
+            <button mat-flat-button
+            color="primary"
+            [disabled]="!isAdmin()"
+            (click)="onClickEdit()">
+              EDIT
+            </button>
+        <button mat-flat-button color="warn" (click)="onDelete()">
+          DELETE
+        </button>
+      </div>
+    </mat-card>
+  </div>
+  

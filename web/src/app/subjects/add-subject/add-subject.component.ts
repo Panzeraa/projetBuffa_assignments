@@ -35,15 +35,17 @@ export class AddSubjectComponent implements OnInit {
     nouveauSubject.idTeacher = this.teacherSubject;
     nouveauSubject.name = this.nameSubject;
 
-    this.subjectService.addSubject(nouveauSubject)
+    if(nouveauSubject.idTeacher!=null && nouveauSubject.name!=null) {
+      this.subjectService.addSubject(nouveauSubject)
       .subscribe(message => {
         console.log(message);
         // on navigue vers la page d'accueil, en mettant cette ligne ici on est sur
         // d'afficher le nouvel élément inséré...
-        this.router.navigate(['home']);
+        this.router.navigate(['/subject', message.id, 'edit']);
       });
-
-
+    } else {
+     alert("Les champs 'Nom de l'enseignement' et 'Enseignant(e)' sont obligatoires");
+    }
   }
 
 }

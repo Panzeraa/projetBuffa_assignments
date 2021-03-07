@@ -67,12 +67,11 @@ app.route(prefix + "/image").get(assignment.getImage);
 app.route(prefix + "/subjects").get(subject.getSubjects);
 
 app.route(prefix + "/subjects").post(subject.postSubject);
+app.route(prefix + "/subject/:id").get(subject.getSubject);
 
 app.route(prefix + "/teachers").get(teacher.getTeachers);
 
 app.route(prefix + "/teachers").post(teacher.postTeacher);
-
-
 
 app
   .route(prefix + "/assignments/:id")

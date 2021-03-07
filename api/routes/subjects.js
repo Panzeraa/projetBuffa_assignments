@@ -1,3 +1,4 @@
+const { ObjectID } = require("bson");
 let Subject = require("../model/subjectModel");
 
 // Récupérer tous les subjects (GET)
@@ -25,9 +26,9 @@ function getSubjects(req, res) {
 
 // Récupérer un subject par son id (GET)
 function getSubject(req, res) {
-  let subjectId = req.params.id;
+  let subjectId = ObjectID(req.params.id);
 
-  Subject.findOne({ id: subjectId }, (err, subject) => {
+  Subject.findOne({ _id: subjectId }, (err, subject) => {
     if (err) {
       res.send(err);
     }
@@ -48,7 +49,7 @@ function postSubject(req, res) {
     if (err) {
       res.send("cant post subject ", err);
     }
-    res.json({ message: `${subject.name} saved!` });
+    res.json({ message: `${subject.name} saved!`, id: subject._id});
   });
 }
 
@@ -57,7 +58,7 @@ function updateSubject(req, res) {
   console.log("UPDATE recu subject : ");
   console.log(req.body);
   Subject.findByIdAndUpdate(
-    req.body._id,
+    ObjectID(req.body._id),
     req.body,
     { new: true },
     (err, subject) => {
@@ -67,8 +68,6 @@ function updateSubject(req, res) {
       } else {
         res.json({ message: "updated" });
       }
-
-      // console.log('updated ', subject)
     }
   );
 }

@@ -54,8 +54,8 @@ const routes: Routes = [
   },
   {path: 'subjects', component: SubjectsComponent},
   {path: 'subjects/add', component: AddSubjectComponent},
-  {path: 'subjects/:id', component: DetailSubjectComponent},
-  {path: 'subjects/:id/edit', component: EditSubjectComponent, canActivate: [AuthGuard]}
+  {path: 'subject/:id', component: DetailSubjectComponent},
+  {path: 'subject/:id/edit', component: EditSubjectComponent}
 ];
 
 @NgModule({
