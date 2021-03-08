@@ -39,7 +39,7 @@ Dans deux terminaux différents :
 
 ### Gestion de login/password
 
-Connexion en tant qu'utilisateur (login: **test** et password: **password**) afin d'avoir la possibilité d'éditer les assignments et les subjects.
+::warning:: Connexion en tant qu'utilisateur (login: **test** et password: **password**) afin d'avoir la possibilité d'éditer les assignments et les subjects. ::warning:: 
  
 ### Affichage des Assignments
 
@@ -58,4 +58,4 @@ Il est possible de modifier et supprimer un assignment.
 
 Les sujets peuvent être crées. On leurs attribut un nom, un enseignant (présent en base) et une image.
 
-Il est possible de modifier (**++importer** une image)et supprimer un subject.
+Il est possible de modifier (**++importer** une image) et supprimer un subject.
