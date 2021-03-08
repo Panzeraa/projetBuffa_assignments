@@ -10,7 +10,7 @@ export class AuthService {
 
   constructor(private http: HttpClient) { }
 
-  uri = 'http://localhost:8010/api/utilisateurs';
+  uri = 'https://assignmentrestapi.herokuapp.com/api/utilisateurs';
 
   logIn(user: any): Observable<any> {
     this.loggedIn = true;

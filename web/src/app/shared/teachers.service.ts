@@ -14,8 +14,8 @@ export class TeachersService {
 
   public teachers: Teacher;
 
-  uriImg = 'http://localhost:8010/api/image';
-  uri = 'http://localhost:8010/api/teachers';
+  uriImg = 'https://assignmentrestapi.herokuapp.com/api/image';
+  uri = 'https://assignmentrestapi.herokuapp.com/api/teachers';
 
   public getTeachers() {
     this.http.get<Teacher>(this.uri).subscribe((data) => {

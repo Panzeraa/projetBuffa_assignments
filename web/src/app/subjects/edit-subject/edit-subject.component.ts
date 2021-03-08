@@ -4,6 +4,8 @@ import { SubjectsService } from '../../shared/subjects.service';
 import { ActivatedRoute, Router } from '@angular/router';
 import { AuthService } from 'src/app/shared/auth.service';
 import { AssignmentsService } from 'src/app/shared/assignments.service';
+import { MatSnackBar } from '@angular/material/snack-bar';
+
 @Component({
   selector: 'app-edit-subject',
   templateUrl: './edit-subject.component.html',
@@ -16,6 +18,7 @@ export class EditSubjectComponent implements OnInit {
     public assignmentService: AssignmentsService,
     private route: ActivatedRoute,
     private router: Router,
+    private _snackBar: MatSnackBar,
     private authService: AuthService) { }
 
   ngOnInit(): void {
@@ -33,6 +36,14 @@ export class EditSubjectComponent implements OnInit {
     console.log(fragment);
   }
 
+  openSnackBar(message: string) {
+    this._snackBar.open(message, null, {
+      duration: 5000,
+      horizontalPosition: "center",
+      verticalPosition: "bottom",
+    });
+  }
+
   fileChange(event) {
     console.log(event);
     let fileList: FileList = event.target.files;
@@ -47,6 +58,7 @@ export class EditSubjectComponent implements OnInit {
       this.assignmentService
         .sendFile(formData)
         .subscribe((message) => {
+          this.openSnackBar("L'image a bien été envoyé")
           console.log(message);
         });
 

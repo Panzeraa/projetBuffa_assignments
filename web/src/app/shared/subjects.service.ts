@@ -15,8 +15,8 @@ export class SubjectsService {
 
   public subjects: Subject;
 
-  uriImg = 'http://localhost:8010/api/image';
-  uri = 'http://localhost:8010/api/';
+  uriImg = 'https://assignmentrestapi.herokuapp.com/api/image';
+  uri = 'https://assignmentrestapi.herokuapp.com/api/';
 
   public getSubjects() {
     this.http.get<Subject>(this.uri + 'subjects').subscribe((data) => {

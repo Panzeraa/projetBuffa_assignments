@@ -131,6 +131,7 @@ app
 app.post('/api/image',upload.single('uploadfile'), function (req, res, next) {
 
   console.log(req);
+  res.send({message: "Image enregistrée"}) 
   // Error MiddleWare for multer file upload, so if any 
     // error occurs, the image would not be uploaded! 
   //   upload(req,res,function(err) { 

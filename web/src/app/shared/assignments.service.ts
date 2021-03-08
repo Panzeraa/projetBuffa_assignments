@@ -16,7 +16,8 @@ export class AssignmentsService {
     
   public students: any = [];
 
-  uri = 'http://localhost:8010/api/';
+  // uri = 'http://localhost:8010/api/';
+  uri = 'https://assignmentrestapi.herokuapp.com/api/';
 
   sendFile(file): Observable<Object>{
     return this.http.post(this.uri + "image", file);
