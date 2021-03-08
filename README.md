@@ -39,7 +39,7 @@ Dans deux terminaux différents :
 
 ### Gestion de login/password
 
-::warning:: Connexion en tant qu'utilisateur (login: **test** et password: **password**) afin d'avoir la possibilité d'éditer les assignments et les subjects. ::warning:: 
+:warning: Connexion en tant qu'utilisateur (login: **test** et password: **password**) afin d'avoir la possibilité d'éditer les assignments et les subjects. :warning:
  
 ### Affichage des Assignments
 
