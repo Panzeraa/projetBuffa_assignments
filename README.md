@@ -39,7 +39,7 @@ Dans deux terminaux différents :
 
 ### Gestion de login/password
 
-Connexion en tant qu'utilisateur (login: **test** et password: **password**) afin d'avoir la possibilité d'éditer les assignments et les subjects.
+!! Connexion en tant qu'utilisateur (login: **test** et password: **password**) afin d'avoir la possibilité d'éditer les assignments et les subjects.
  
 ### Affichage des Assignments
 
